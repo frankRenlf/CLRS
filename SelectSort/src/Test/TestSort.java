@@ -1,6 +1,8 @@
 package Test;
 
 import algorithm.Sort;
+import algorithm.Sorts.Quick;
+import algorithm.Sorts.Select;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -34,16 +36,29 @@ public class TestSort {
     }
 
     public void testSelectSort() {
-        Sort sort = new Sort();
+        Select sort = new Select();
         int[] tmp = copyNums();
         sort.selectSort(tmp);
         System.out.println("Before: " + Arrays.toString(nums));
         System.out.println("After: " + Arrays.toString(tmp));
     }
 
-    public static void main(String[] args) {
+    public void testQuickSort() {
+        Sort sort = new Sort();
+        int[] tmp = copyNums();
+        sort.quickSort(tmp, 0, tmp.length - 1);
+        System.out.println("Before: " + Arrays.toString(nums));
+        System.out.println("After: " + Arrays.toString(tmp));
+    }
+
+    public static void main1(String[] args) {
         TestSort testSort = new TestSort(10);
         testSort.testSelectSort();
+    }
+
+    public static void main(String[] args) {
+        TestSort testSort = new TestSort(10);
+        testSort.testQuickSort();
     }
 
 

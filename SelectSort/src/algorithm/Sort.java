@@ -1,6 +1,7 @@
 package algorithm;
 
 import algorithm.Sorts.Quick;
+import algorithm.Sorts.Select;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +15,8 @@ import algorithm.Sorts.Quick;
  * @github : https://github.com/frankRenlf?tab=overview&from=2022-04-01&to=2022-04-30
  * @Description :
  */
-public class Sort extends Quick {
+public interface Sort{
+
+    void sort(int[] arr);
 
 }

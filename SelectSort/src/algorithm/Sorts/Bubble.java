@@ -7,14 +7,14 @@ import algorithm.Sort;
  *
  * @author : Frank.Ren
  * @version : 1.0
- * @Project : SelectSort
- * @Package : Sort
- * @createTime : 2022/7/22 13:57
+ * @Project : CLRS
+ * @Package : algorithm.Sorts
+ * @createTime : 2022/7/28 14:18
  * @Email : sc19lr@leeds.ac.uk
  * @github : https://github.com/frankRenlf?tab=overview&from=2022-04-01&to=2022-04-30
  * @Description :
  */
-public class Select implements Sort {
+public class Bubble implements Sort {
 
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
@@ -22,21 +22,18 @@ public class Select implements Sort {
         nums[j] = tmp;
     }
 
-    private void selectSort(int[] nums) {
-        for (int cur = 1; cur < nums.length; cur++) {
-            int key = nums[cur];
-            int pre = cur - 1;
-            while (pre >= 0 && key < nums[pre]) {
-                nums[pre + 1] = nums[pre];
-                pre--;
+    private void bubbleSort(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (nums[j + 1] < nums[j]) {
+                    swap(nums, j + 1, j);
+                }
             }
-            nums[pre + 1] = key;
         }
     }
 
-
     @Override
     public void sort(int[] arr) {
-        selectSort(arr);
+        bubbleSort(arr);
     }
 }

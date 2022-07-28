@@ -1,6 +1,7 @@
 package Test;
 
 import algorithm.Sort;
+import algorithm.Sorts.Bubble;
 import algorithm.Sorts.Quick;
 import algorithm.Sorts.Select;
 
@@ -19,11 +20,11 @@ import java.util.Random;
  * @github : https://github.com/frankRenlf?tab=overview&from=2022-04-01&to=2022-04-30
  * @Description :
  */
-public class TestSort {
+public class TestSortMethod {
 
-    private int[] nums;
+    private final int[] nums;
 
-    public TestSort(int n) {
+    public TestSortMethod(int n) {
         nums = new int[n];
         Random rd = new Random();
         for (int i = 0; i < n; i++) {
@@ -35,31 +36,28 @@ public class TestSort {
         return Arrays.copyOf(nums, nums.length);
     }
 
+
     public void testSelectSort() {
-        Select sort = new Select();
+        Sort sort = new Select();
         int[] tmp = copyNums();
-        sort.selectSort(tmp);
+        sort.sort(tmp);
         System.out.println("Before: " + Arrays.toString(nums));
         System.out.println("After: " + Arrays.toString(tmp));
     }
 
     public void testQuickSort() {
-        Sort sort = new Sort();
+        Sort sort = new Quick();
         int[] tmp = copyNums();
-        sort.quickSort(tmp, 0, tmp.length - 1);
+        sort.sort(tmp);
         System.out.println("Before: " + Arrays.toString(nums));
         System.out.println("After: " + Arrays.toString(tmp));
     }
 
-    public static void main1(String[] args) {
-        TestSort testSort = new TestSort(10);
-        testSort.testSelectSort();
+    public void testBubbleSort() {
+        Sort sort = new Bubble();
+        int[] tmp = copyNums();
+        sort.sort(tmp);
+        System.out.println("Before: " + Arrays.toString(nums));
+        System.out.println("After: " + Arrays.toString(tmp));
     }
-
-    public static void main(String[] args) {
-        TestSort testSort = new TestSort(10);
-        testSort.testQuickSort();
-    }
-
-
 }

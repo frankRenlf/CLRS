@@ -14,7 +14,8 @@ import algorithm.Sort;
  * @github : https://github.com/frankRenlf?tab=overview&from=2022-04-01&to=2022-04-30
  * @Description :
  */
-public class Quick {
+public class Quick implements Sort {
+
 
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
@@ -22,7 +23,7 @@ public class Quick {
         nums[j] = tmp;
     }
 
-    public void quickSort(int[] nums, int start, int end) {
+    private void quickSort(int[] nums, int start, int end) {
         if (end - start <= 1) {
             return;
         }
@@ -48,4 +49,8 @@ public class Quick {
     }
 
 
+    @Override
+    public void sort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
 }

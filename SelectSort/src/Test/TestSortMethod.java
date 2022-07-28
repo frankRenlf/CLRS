@@ -2,6 +2,7 @@ package Test;
 
 import algorithm.Sort;
 import algorithm.Sorts.Bubble;
+import algorithm.Sorts.Merge;
 import algorithm.Sorts.Quick;
 import algorithm.Sorts.Select;
 
@@ -60,4 +61,13 @@ public class TestSortMethod {
         System.out.println("Before: " + Arrays.toString(nums));
         System.out.println("After: " + Arrays.toString(tmp));
     }
+
+    public void testMergeSort() {
+        Sort sort = new Merge();
+        int[] tmp = copyNums();
+        sort.sort(tmp);
+        System.out.println("Before: " + Arrays.toString(nums));
+        System.out.println("After: " + Arrays.toString(tmp));
+    }
+
 }

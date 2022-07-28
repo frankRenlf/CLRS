@@ -24,9 +24,14 @@ public class ImplTest {
         testSort.testQuickSort();
     }
 
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         TestSortMethod testSort = new TestSortMethod(10);
         testSort.testBubbleSort();
+    }
+
+    public static void main(String[] args) {
+        TestSortMethod testSort = new TestSortMethod(10);
+        testSort.testMergeSort();
     }
 
 }

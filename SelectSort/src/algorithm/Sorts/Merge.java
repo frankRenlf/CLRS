@@ -33,6 +33,7 @@ public class Merge implements Sort {
         }
     }
 
+    // 出去吃饭了,可以先看看merge函数
     @Override
     public void sort(int[] arr) {
         mergeSortRec(arr, 0, arr.length - 1);

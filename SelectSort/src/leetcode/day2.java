@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -32,6 +34,32 @@ public class day2 {
             index--;
         }
         return ret;
+    }
+
+    public void rotate(int[] nums, int k) {
+        int len = nums.length;
+        int step = k % len;
+        int[] tmp = new int[len];
+        for (int i = 0; i < len; i++) {
+            tmp[(i + step) % len] = nums[i];
+        }
+        System.arraycopy(tmp, 0, nums, 0, len);
+    }
+
+    public void rotate2(int[] nums, int k) {
+        int len = nums.length;
+        int step = k % len;
+        reverse(nums, 0, len - 1);
+        reverse(nums, 0, step - 1);
+        reverse(nums, step, len - 1);
+    }
+
+    private void reverse(int[] nums, int left, int right) {
+        while (left < right) {
+            int tmp = nums[left];
+            nums[left++] = nums[right];
+            nums[right--] = tmp;
+        }
     }
 
 }

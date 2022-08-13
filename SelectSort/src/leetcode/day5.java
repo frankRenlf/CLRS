@@ -28,4 +28,20 @@ public class day5 {
         return list.get(list.size() / 2);
     }
 
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode pre = new ListNode(0, head);
+        ListNode slow = pre, fast = head;
+        while (n > 0) {
+            fast = fast.next;
+            n--;
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return pre.next;
+    }
+
 }

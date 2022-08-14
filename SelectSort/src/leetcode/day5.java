@@ -3,7 +3,9 @@ package leetcode;
 import leetcode.algorithm.ListNode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,7 +30,6 @@ public class day5 {
         return list.get(list.size() / 2);
     }
 
-
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode pre = new ListNode(0, head);
         ListNode slow = pre, fast = head;
@@ -43,5 +44,10 @@ public class day5 {
         slow.next = slow.next.next;
         return pre.next;
     }
+
+//    public int orangesRotting(int[][] grid) {
+//        Queue<Integer[][]> queue = new LinkedList<>();
+//
+//    }
 
 }

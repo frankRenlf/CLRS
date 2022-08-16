@@ -1,7 +1,4 @@
-package algorithm;
-
-import algorithm.Sorts.Quick;
-import algorithm.Sorts.Select;
+package ArraySort;
 
 /**
  * Created with IntelliJ IDEA.

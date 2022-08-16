@@ -1,10 +1,10 @@
 package Test;
 
-import algorithm.Sort;
-import algorithm.Sorts.Bubble;
-import algorithm.Sorts.Merge;
-import algorithm.Sorts.Quick;
-import algorithm.Sorts.Select;
+import ArraySort.Sort;
+import ArraySort.Sorts.Bubble;
+import ArraySort.Sorts.Merge;
+import ArraySort.Sorts.Quick;
+import ArraySort.Sorts.Select;
 
 import java.util.Arrays;
 import java.util.Random;

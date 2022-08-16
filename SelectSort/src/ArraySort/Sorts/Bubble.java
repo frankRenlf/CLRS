@@ -1,6 +1,6 @@
-package algorithm.Sorts;
+package ArraySort.Sorts;
 
-import algorithm.Sort;
+import ArraySort.Sort;
 
 /**
  * Created with IntelliJ IDEA.

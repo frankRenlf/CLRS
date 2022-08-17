@@ -62,4 +62,44 @@ public class day2 {
         }
     }
 
+    public int[][] updateMatrix(int[][] mat) {
+        int m = mat.length, n = mat[0].length;
+        int[][] ret = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(ret[i], Integer.MAX_VALUE / 2);
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                ret[i][j] = mat[i][j] == 0 ? 0 : ret[i][j];
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i > 0) {
+                    ret[i][j] = Math.min(ret[i - 1][j] + 1, ret[i][j]);
+                }
+                if (j > 0) {
+                    ret[i][j] = Math.min(ret[i][j], ret[i][j - 1] + 1);
+                }
+            }
+        }
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (i < m - 1) {
+                    ret[i][j] = Math.min(ret[i + 1][j] + 1, ret[i][j]);
+                }
+                if (j < n - 1) {
+                    ret[i][j] = Math.min(ret[i][j], ret[i][j + 1] + 1);
+                }
+            }
+        }
+        return ret;
+    }
+
+    public int orangesRotting(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        
+    }
+
+
 }

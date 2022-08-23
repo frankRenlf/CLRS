@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.stage1;
 
 /**
  * Created with IntelliJ IDEA.

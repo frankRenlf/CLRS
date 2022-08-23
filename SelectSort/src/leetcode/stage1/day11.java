@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.stage1;
 
 import java.util.ArrayList;
 import java.util.List;

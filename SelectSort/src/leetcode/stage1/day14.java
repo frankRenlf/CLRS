@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.stage1;
 
 import leetcode.algorithm.TreeNode;
 

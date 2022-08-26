@@ -3,6 +3,8 @@ package leetcode.stage2;
 import leetcode.algorithm.ListNode;
 import leetcode.algorithm.TreeNode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -66,6 +68,24 @@ public class day3 {
             }
         }
         return ret.next;
+    }
+
+    public List<List<Integer>> threeSum(int[] nums){
+        List<List<Integer>> ret = new ArrayList<>();
+        if(nums==null||nums.length<=2)return ret;
+        Arrays.sort(nums);
+        for(int i =0;i<nums.length-2;i++){
+            if(nums[i]>0)break;
+            while(i>0&&nums[i]==nums[i-1]){
+                i++;
+            }
+            int left = i+1,right = nums.length-1;
+            while(left<right){
+                if(nums[i]+nums[left]+nums[right]==0){
+
+                }
+            }
+        }
     }
 
 }

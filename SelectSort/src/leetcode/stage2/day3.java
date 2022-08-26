@@ -6,6 +6,7 @@ import leetcode.algorithm.TreeNode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created with IntelliJ IDEA.
@@ -93,6 +94,73 @@ public class day3 {
             }
         }
         return ret;
+    }
+
+    public boolean backspaceCompare(String s, String t) {
+        Stack<Character> s1 = new Stack<>();
+        Stack<Character> s2 = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '#') {
+                if (!s1.isEmpty()) {
+                    s1.pop();
+                }
+            } else {
+                s1.push(s.charAt(i));
+            }
+        }
+        for (int i = 0; i < t.length(); i++) {
+            if (t.charAt(i) == '#') {
+                if (!s2.isEmpty()) {
+                    s2.pop();
+                }
+            } else {
+                s2.push(t.charAt(i));
+            }
+        }
+        if (s1.size() != s2.size()) return false;
+        while (s1.size() != 0) {
+            if (s1.pop() != s2.pop()) return false;
+        }
+        return true;
+    }
+
+    public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
+        int end1 = firstList.length, end2 = secondList.length;
+        int s1 = 0, s2 = 0;
+        List<int[]> ret = new ArrayList<>();
+        while (s1 < end1 && s2 < end2) {
+            int left = Math.max(firstList[s1][0], secondList[s2][0]);
+            int right = Math.min(firstList[s1][1], secondList[s2][1]);
+            if (left <= right) {
+                ret.add(new int[]{left, right});
+            }
+            if (firstList[s1][1] < secondList[s2][1]) {
+                s1++;
+            } else {
+                s2++;
+            }
+        }
+        return ret.toArray(new int[ret.size()][]);
+    }
+
+    public int maxArea(int[] height) {
+        int max = 0;
+        int left = 0, right = height.length - 1;
+        while (left < right) {
+            int high = Math.min(height[left], height[right]);
+            max = Math.max(max, high * (right - left));
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        day3 d3 = new day3();
+        System.out.println(d3.backspaceCompare("ab#c", "ad#c"));
     }
 
 }

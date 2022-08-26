@@ -70,22 +70,29 @@ public class day3 {
         return ret.next;
     }
 
-    public List<List<Integer>> threeSum(int[] nums){
+    public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ret = new ArrayList<>();
-        if(nums==null||nums.length<=2)return ret;
+        if (nums == null || nums.length <= 2) return ret;
         Arrays.sort(nums);
-        for(int i =0;i<nums.length-2;i++){
-            if(nums[i]>0)break;
-            while(i>0&&nums[i]==nums[i-1]){
-                i++;
-            }
-            int left = i+1,right = nums.length-1;
-            while(left<right){
-                if(nums[i]+nums[left]+nums[right]==0){
-
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) break;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            int left = i + 1, right = nums.length - 1;
+            while (left < right) {
+                if (nums[i] + nums[left] + nums[right] == 0) {
+                    ret.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
+                    left++;
+                    right--;
+                    while (left < right && nums[left] == nums[left - 1]) left++;
+                    while (left < right && nums[right] == nums[right + 1]) right--;
+                } else if (nums[i] + nums[left] + nums[right] < 0) {
+                    left++;
+                } else {
+                    right--;
                 }
             }
         }
+        return ret;
     }
 
 }

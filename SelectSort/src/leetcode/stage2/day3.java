@@ -1,5 +1,10 @@
 package leetcode.stage2;
 
+import leetcode.algorithm.ListNode;
+import leetcode.algorithm.TreeNode;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -29,6 +34,38 @@ public class day3 {
             }
         }
         return (first - 1) * (second - 1);
+    }
+
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) return null;
+        ListNode cur = head;
+        ListNode next = head.next;
+        while (next != null) {
+            if (cur.val == next.val) {
+                next = next.next;
+            } else {
+                cur.next = next;
+                cur = cur.next;
+            }
+        }
+        return head;
+    }
+
+    public ListNode deleteDuplicates2(ListNode head) {
+        if (head == null) return null;
+        ListNode ret = new ListNode(0, head);
+        ListNode pre = ret;
+        while (pre.next != null && pre.next.next != null) {
+            if (pre.next.val == pre.next.next.val) {
+                int value = pre.next.val;
+                while (pre.next != null && pre.next.val == value) {
+                    pre.next = pre.next.next;
+                }
+            } else {
+                pre = pre.next;
+            }
+        }
+        return ret.next;
     }
 
 }

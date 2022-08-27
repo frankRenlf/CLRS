@@ -3,6 +3,7 @@ package leetcode.stage2;
 import leetcode.algorithm.TreeNode;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +35,11 @@ public class day4 {
         return Math.max(index - levelMin.get(depth) + 1,
                 Math.max(dfs(levelMin, node.left, depth + 1, index * 2),
                         dfs(levelMin, node.right, depth + 1, index * 2 + 1)));
+    }
+
+
+    public List<Integer> findAnagrams(String s, String p) {
+
     }
 
 }

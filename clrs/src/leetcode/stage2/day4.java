@@ -38,6 +38,7 @@ class Solution {
         return res;
     }
 }
+
 public class day4 {
 
 
@@ -58,8 +59,46 @@ public class day4 {
     }
 
 
-    public List<Integer> findAnagrams(String s, String p) {
-
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if (nums == null || nums.length == 0) return 0;
+        int left = 0, right = 0;
+        int len = nums.length;
+        int count = 0;
+        int product = 1;
+        while (right < len) {
+            product *= nums[right];
+            while (left <= right && product >= k) {
+                product /= nums[left];
+                left++;
+            }
+            count += right - left + 1;
+            right++;
+        }
+        return count;
     }
+
+    public int minSubArrayLen(int target, int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int left = 0, right = 0;
+        int count = 0, len = nums.length;
+        int ret = len + 1;
+        while (right < len) {
+            count += nums[right];
+            while (count >= target) {
+                count -= nums[left];
+                ret = Math.min(ret, right - left + 1);
+                left++;
+            }
+            right++;
+        }
+        return ret != len + 1 ? ret : 0;
+    }
+
+    static day4 d4 = new day4();
+
+    public static void main(String[] args) {
+        System.out.println(d4.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}));
+    }
+
 
 }

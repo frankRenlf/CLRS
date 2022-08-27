@@ -2,6 +2,7 @@ package leetcode.stage2;
 
 import leetcode.algorithm.TreeNode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,25 @@ import java.util.Map;
  * @github : https://github.com/frankRenlf
  * @Description :
  */
+
+class Solution {
+    //abca ac
+    public List<Integer> findAnagrams(String s, String p) {
+        int[] cnt = new int[128];
+        for (char c : p.toCharArray()) cnt[c]++;
+        int lo = 0, hi = 0;
+        List<Integer> res = new ArrayList<>();
+        while (hi < s.length()) {
+            if (cnt[s.charAt(hi)] > 0) {
+                cnt[s.charAt(hi++)]--;
+                if (hi - lo == p.length()) res.add(lo);
+            } else {
+                cnt[s.charAt(lo++)]++;
+            }
+        }
+        return res;
+    }
+}
 public class day4 {
 
 

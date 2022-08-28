@@ -114,6 +114,8 @@ public class day5 {
         return n / 5 + f(n / 5);
     }
 
+
+
     static day5 d5 = new day5();
     static Solution1 sol1 = new Solution1();
 

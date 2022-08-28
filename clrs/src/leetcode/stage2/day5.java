@@ -42,6 +42,28 @@ class Solution1 {
 
 public class day5 {
 
+    public int findCircleNum(int[][] isConnected) {
+        int cities = isConnected.length;
+        boolean[] visited = new boolean[cities];
+        int provinces = 0;
+        for (int i = 0; i < cities; i++) {
+            if (!visited[i]) {
+                dfs(isConnected, visited, cities, i);
+                provinces++;
+            }
+        }
+        return provinces;
+    }
+
+    public void dfs(int[][] isConnected, boolean[] visited, int cities, int i) {
+        for (int j = 0; j < cities; j++) {
+            if (isConnected[i][j] == 1 && !visited[j]) {
+                visited[j] = true;
+                dfs(isConnected, visited, cities, j);
+            }
+        }
+    }
+
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) return 0;
         int count = 0;

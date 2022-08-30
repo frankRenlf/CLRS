@@ -1,6 +1,10 @@
 package leetcode.stage2;
 
+import leetcode.algorithm.Node;
 import leetcode.algorithm.TreeNode;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,6 +36,31 @@ public class day7 {
             }
         }
         par.right = new TreeNode(val);
+        return root;
+    }
+
+    public Node connect(Node root) {
+        if (root == null) return null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size != 0) {
+                Node cur = queue.poll();
+                size--;
+                if (size != 0) {
+                    cur.next = queue.peek();
+                } else {
+                    cur.next = null;
+                }
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
+                }
+            }
+        }
         return root;
     }
 

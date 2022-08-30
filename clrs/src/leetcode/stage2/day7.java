@@ -1,10 +1,9 @@
 package leetcode.stage2;
 
-import leetcode.algorithm.Node;
 import leetcode.algorithm.TreeNode;
+import leetcode.algorithm.Node;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -122,12 +121,12 @@ public class day7 {
         return check(s.left, t.left) && check(s.right, t.right);
     }
 
-    static class Node {
+    static class Node2 {
         int x;
         int y;
         int step;
 
-        public Node(int start, int end, int step) {
+        public Node2(int start, int end, int step) {
             this.x = start;
             this.y = end;
             this.step = step;
@@ -139,8 +138,8 @@ public class day7 {
 
     public int shortestPathBinaryMatrix(int[][] grid) {
 
-        Node node = new Node(0, 0, 2);
-        Queue<Node> queue = new LinkedList<>();
+        Node2 node = new Node2(0, 0, 2);
+        Queue<Node2> queue = new LinkedList<>();
         queue.offer(node);
 
         int n = grid.length;
@@ -150,7 +149,7 @@ public class day7 {
             return n;
         }
         while (!queue.isEmpty()) {
-            Node cur = queue.poll();
+            Node2 cur = queue.poll();
             int x = cur.x;
             int y = cur.y;
             int step = cur.step;
@@ -162,12 +161,67 @@ public class day7 {
                     if (newX == n - 1 && newY == n - 1) {
                         return step;
                     }
-                    queue.offer(new Node(newX, newY, step + 1));
+                    queue.offer(new Node2(newX, newY, step + 1));
                     grid[newX][newY] = 1; //标记已遍历过，避免重复
                 }
             }
         }
         return -1;
+    }
+
+    public void solve(char[][] board) {
+        if (board == null || board.length == 0 || board[0].length == 0) return;
+        int row = board.length, col = board[0].length;
+        for (int i = 0; i < row; i++) {
+            solve_dfs(board, i, 0, row, col);
+            solve_dfs(board, i, col - 1, row, col);
+        }
+        for (int i = 1; i < col - 1; i++) {
+            solve_dfs(board, 0, i, row, col);
+            solve_dfs(board, row - 1, i, row, col);
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                }
+                if (board[i][j] == 'F') {
+                    board[i][j] = 'O';
+                }
+            }
+        }
+    }
+
+    private void solve_dfs(char[][] board, int i, int j, int row, int col) {
+        if (i < 0 || j < 0 || i >= row || j >= col || board[i][j] != 'O') {
+            return;
+        }
+        board[i][j] = 'F';
+        solve_dfs(board, i - 1, j, row, col);
+        solve_dfs(board, i, j + 1, row, col);
+        solve_dfs(board, i + 1, j, row, col);
+        solve_dfs(board, i, j - 1, row, col);
+    }
+
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        List<List<Integer>> ret = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        if (graph == null || graph.length == 0 || graph[0].length == 0) return ret;
+        int end = graph.length-1;
+        stack.push(0);
+        findPath_dfs(ret, stack, graph, 0, end);
+        return ret;
+    }
+
+    private void findPath_dfs(List<List<Integer>> ret, Stack<Integer> stack, int[][] graph, int i, int end) {
+        if (i == end) {
+            ret.add(new ArrayList<>(stack));
+        }
+        for (int j = 0; j < graph[i].length; j++) {
+            stack.push(graph[i][j]);
+            findPath_dfs(ret, stack, graph, graph[i][j], end);
+            stack.pop();
+        }
     }
 
 }

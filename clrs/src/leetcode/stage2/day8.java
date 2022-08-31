@@ -16,6 +16,12 @@ import java.util.*;
  */
 public class day8 {
 
+    static day8 d8 = new day8();
+
+    public static void main(String[] args) {
+        System.out.println(d8.subsetsWithDup(new int[]{1, 2, 2}));
+    }
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> ret = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
@@ -27,6 +33,7 @@ public class day8 {
     private void subsetsWithDup_dfs(List<List<Integer>> ret, Stack<Integer> stack, boolean isSelectPre, int[] nums, int cur) {
         if (cur == nums.length) {
             ret.add(new ArrayList<>(stack));
+            return;
         }
         subsetsWithDup_dfs(ret, stack, false, nums, cur + 1);
         if (!isSelectPre && cur >= 1 && nums[cur - 1] == nums[cur]) {

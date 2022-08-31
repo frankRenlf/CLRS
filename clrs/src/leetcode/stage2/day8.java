@@ -1,8 +1,6 @@
 package leetcode.stage2;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +15,25 @@ import java.util.Stack;
  * @Description :
  */
 public class day8 {
+
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ret = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        subsets_dfs(ret, stack, nums, 0);
+
+        return ret;
+    }
+
+    private void subsets_dfs(List<List<Integer>> ret, Stack<Integer> stack, int[] nums, int i) {
+        if (i == nums.length) {
+            ret.add(new ArrayList<>(stack));
+            return;
+        }
+        subsets_dfs(ret, stack, nums, i + 1);
+        stack.push(nums[i]);
+        subsets_dfs(ret, stack, nums, i + 1);
+        stack.pop();
+    }
 
     public boolean validateStackSequences2(int[] pushed, int[] popped) {
         Stack<Integer> s1 = new Stack<>();

@@ -2,10 +2,7 @@ package leetcode.stage2;
 
 import leetcode.algorithm.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -115,6 +112,38 @@ public class day10 {
                 path.pop();
             }
         }
+    }
+
+    public List<String> letterCombinations(String digits) {
+        List<String> ret = new ArrayList<>();
+        if (digits == null || digits.length() == 0) return ret;
+        Map<Character, String> phoneMap = new HashMap<Character, String>() {{
+            put('2', "abc");
+            put('3', "def");
+            put('4', "ghi");
+            put('5', "jkl");
+            put('6', "mno");
+            put('7', "pqrs");
+            put('8', "tuv");
+            put('9', "wxyz");
+        }};
+        letterCombinations_dfs(ret, phoneMap, digits, 0, new StringBuffer());
+        return ret;
+    }
+
+    private void letterCombinations_dfs(List<String> ret, Map<Character, String> phoneMap, String digits, int index, StringBuffer stringBuffer) {
+        if (index == digits.length()) {
+            ret.add(new String(stringBuffer));
+            return;
+        }
+        char digit = digits.charAt(index);
+        String letter = phoneMap.get(digit);
+        for (int i = index; i < letter.length(); i++) {
+            stringBuffer.append(letter.charAt(i));
+            letterCombinations_dfs(ret, phoneMap, digits, i + 1, stringBuffer);
+            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+        }
+
     }
 
     public static void main(String[] args) {

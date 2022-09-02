@@ -145,7 +145,68 @@ public class day10 {
         }
     }
 
+    public List<String> generateParenthesis(int n) {
+        List<String> ret = new ArrayList<>();
+        if (n == 0) return ret;
+        generate_dfs(ret, n, n, new StringBuffer());
+        return ret;
+    }
+
+    private void generate_dfs(List<String> ret, int left, int right, StringBuffer stringBuffer) {
+        if (left == 0 && right == 0) {
+            ret.add(new String(stringBuffer));
+            return;
+        }
+        if (left > 0) {
+            stringBuffer.append('(');
+            generate_dfs(ret, left - 1, right, stringBuffer);
+            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+        }
+        if (left < right) {
+            stringBuffer.append(')');
+            generate_dfs(ret, left, right - 1, stringBuffer);
+            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+        }
+    }
+
+    public boolean exist(char[][] board, String word) {
+        int h = board.length, w = board[0].length;
+        boolean[][] visited = new boolean[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (check(board, visited, i, j, word, 0)) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
+    private boolean check(char[][] board, boolean[][] visited, int i, int j, String word, int index) {
+        if (board[i][j] != word.charAt(index)) return false;
+        if (index == word.length() - 1) return true;
+        visited[i][j] = true;
+        int[][] direction = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for (int[] dir : direction) {
+            int x = i + dir[0], y = j + dir[1];
+            if (x >= 0 && x < board.length && y >= 0 && y < board[0].length) {
+                if (!visited[x][y] && check(board, visited, x, y, word, index+1)) {
+                    return true;
+                }
+            }
+        }
+        visited[i][j] = false;
+        return false;
+    }
+
+
     public static void main(String[] args) {
+        day10 d10 = new day10();
+        System.out.println(d10.generateParenthesis(3));
+    }
+
+    public static void main1(String[] args) {
         int[] candidates = new int[]{10, 1, 2, 7, 6, 1, 5};
         int target = 8;
         day10 d10 = new day10();

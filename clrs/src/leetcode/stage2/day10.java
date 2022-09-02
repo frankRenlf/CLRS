@@ -90,5 +90,40 @@ public class day10 {
         }
     }
 
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ret = new ArrayList<>();
+        Stack<Integer> path = new Stack<>();
+        if (candidates == null || candidates.length == 0) return ret;
+        Arrays.sort(candidates);
+
+        combinationSum2_dfs(ret, path, candidates, target, 0, candidates.length);
+        return ret;
+    }
+
+    private void combinationSum2_dfs(List<List<Integer>> ret, Stack<Integer> path, int[] candidates, int target, int begin, int length) {
+        if (target == 0) {
+            ret.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i = begin; i < length; i++) {
+            if (i > begin && candidates[i] == candidates[i - 1]) continue;
+            if (target - candidates[i] < 0) {
+                break;
+            } else {
+                path.push(candidates[i]);
+                combinationSum2_dfs(ret, path, candidates, target - candidates[i], i + 1, length);
+                path.pop();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] candidates = new int[]{10, 1, 2, 7, 6, 1, 5};
+        int target = 8;
+        day10 d10 = new day10();
+        List<List<Integer>> res = d10.combinationSum2(candidates, target);
+        System.out.println("输出 => " + res);
+    }
+
 
 }

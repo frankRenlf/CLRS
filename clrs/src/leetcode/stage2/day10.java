@@ -138,12 +138,11 @@ public class day10 {
         }
         char digit = digits.charAt(index);
         String letter = phoneMap.get(digit);
-        for (int i = index; i < letter.length(); i++) {
+        for (int i = 0; i < letter.length(); i++) {
             stringBuffer.append(letter.charAt(i));
-            letterCombinations_dfs(ret, phoneMap, digits, i + 1, stringBuffer);
-            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+            letterCombinations_dfs(ret, phoneMap, digits, index + 1, stringBuffer);
+            stringBuffer.deleteCharAt(index);
         }
-
     }
 
     public static void main(String[] args) {

@@ -54,7 +54,21 @@ public class day11 {
     }
 
     public int rob(int[] nums) {
+        int len = nums.length;
+        if (len == 0) return 0;
+        if (len == 1) return nums[0];
+        if (len == 2) return Math.max(nums[0], nums[1]);
+        return Math.max(select(nums, 0, len - 1), select(nums, 1, len));
+    }
 
+    private int select(int[] nums, int begin, int end) {
+        int[] dp = new int[end - begin + 1];
+        dp[0] = nums[begin];
+        dp[1] = Math.max(nums[begin], nums[begin + 1]);
+        for (int i = begin + 2; i < end; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+        }
+        return dp[end - 1];
     }
 
 }

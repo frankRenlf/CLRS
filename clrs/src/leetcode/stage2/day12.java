@@ -52,4 +52,19 @@ public class day12 {
         return dp[m - 1][n - 1];
     }
 
+    public int jump(int[] nums) {
+        int len = nums.length;
+        int max = 0;
+        int end = 0;
+        int count = 0;
+        for (int i = 0; i < len - 1; i++) {
+            max = Math.max(max, nums[i] + i);
+            if (end == i) {
+                count++;
+                end = max;
+            }
+        }
+        return count;
+    }
+
 }

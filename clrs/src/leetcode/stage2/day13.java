@@ -79,9 +79,22 @@ public class day13 {
         return count;
     }
 
+    public int sumRootToLeaf(TreeNode root) {
+        return sum_dfs(root, 0);
+    }
+
+    private int sum_dfs(TreeNode root, int sum) {
+        if (root == null) return 0;
+        sum = (sum << 1) | root.val;
+        if (root.left == null && root.right == null) {
+            return sum;
+        }
+        return sum_dfs(root.left, sum) + sum_dfs(root.right, sum);
+    }
+
     public static void main(String[] args) {
         day13 d13 = new day13();
-        System.out.println(d13.numberOfArithmeticSlices(new int[]{1, 2, 3, 4,5,-1,-7}));
+        System.out.println(d13.numberOfArithmeticSlices(new int[]{1, 2, 3, 4, 5, -1, -7}));
     }
 
 }

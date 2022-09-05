@@ -92,9 +92,29 @@ public class day13 {
         return sum_dfs(root.left, sum) + sum_dfs(root.right, sum);
     }
 
+    public boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int end = 1; end <= s.length(); end++) {
+            for (int start = 0; start < end; start++) {
+                if (dp[start] && wordDict.contains(s.substring(start, end))) {
+                    dp[end] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+
+
     public static void main(String[] args) {
         day13 d13 = new day13();
-        System.out.println(d13.numberOfArithmeticSlices(new int[]{1, 2, 3, 4, 5, -1, -7}));
+//        System.out.println(d13.numberOfArithmeticSlices(new int[]{1, 2, 3, 4, 5, -1, -7}));
+        List<String> list = new ArrayList<>();
+        list.add("leet");
+        list.add("code");
+        boolean key = d13.wordBreak("leetcode", list);
+        System.out.println(key);
     }
 
 }

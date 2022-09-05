@@ -63,4 +63,25 @@ public class day13 {
         }
         return right - left - 1;
     }
+
+    public int numberOfArithmeticSlices(int[] nums) {
+        if (nums == null || nums.length < 3) return 0;
+        int len = 0, count = 0;
+        for (int i = 2; i < nums.length; i++) {
+            int sub = nums[i - 1] - nums[i - 2];
+            if (nums[i] - nums[i - 1] == sub) {
+                len++;
+                count += len;
+            } else {
+                len = 0;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        day13 d13 = new day13();
+        System.out.println(d13.numberOfArithmeticSlices(new int[]{1, 2, 3, 4,5,-1,-7}));
+    }
+
 }

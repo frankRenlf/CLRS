@@ -55,6 +55,32 @@ public class day15 {
         return max;
     }
 
+    public int findNumberOfLIS(int[] nums) {
+        int len = nums.length;
+        int[] dp = new int[len];
+        int[] count = new int[len];
+        int maxLen = 1;
+        for (int i = 0; i < len; i++) {
+            dp[i] = count[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    if (dp[i] < dp[j] + 1) {
+                        dp[i] = dp[j] + 1;
+                        count[i] = count[j];
+                    } else if (dp[i] == dp[j] + 1) {
+                        count[i] += count[j];
+                    }
+                }
+            }
+            maxLen = Math.max(dp[i], maxLen);
+        }
+        int ret = 0;
+        for (int i = 0; i < len; i++) {
+            if (dp[i] == maxLen) ret += count[i];
+        }
+        return ret;
+    }
+
 
     static day15 d15 = new day15();
 

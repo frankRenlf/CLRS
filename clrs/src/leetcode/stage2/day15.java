@@ -1,5 +1,8 @@
 package leetcode.stage2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -14,23 +17,44 @@ package leetcode.stage2;
  */
 public class day15 {
 
-    public String reorderSpaces(String text) {
-        int count = 0, num = 0;
-        StringBuilder ret = new StringBuilder();
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) == ' ') {
-                count++;
-            } else {
-                num++;
-                while (text.charAt(i) != ' ') {
-                    i++;
+    public String reorderSpaces(String s) {
+        int n = s.length(), cnt = 0;
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < n; ) {
+            if (s.charAt(i) == ' ' && ++i >= 0 && ++cnt >= 0) continue;
+            int j = i;
+            while (j < n && s.charAt(j) != ' ') j++;
+            list.add(s.substring(i, j));
+            i = j;
+        }
+        StringBuilder sb = new StringBuilder();
+        int m = list.size(), t = cnt / Math.max(m - 1, 1);
+        StringBuilder k = new StringBuilder();
+        while (t-- > 0) k.append(" ");
+        for (int i = 0; i < m; i++) {
+            sb.append(list.get(i));
+            if (i != m - 1) sb.append(k);
+        }
+        while (sb.length() != n) sb.append(" ");
+        return sb.toString();
+    }
+
+    public int lengthOfLIS(int[] nums) {
+        int len = nums.length;
+        int[] dp = new int[len];
+        int max = 1;
+        for (int i = 0; i < len; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
                 }
             }
-
+            max = Math.max(max, dp[i]);
         }
-        int sub = count /
-        return ret.toString();
+        return max;
     }
+
 
     static day15 d15 = new day15();
 

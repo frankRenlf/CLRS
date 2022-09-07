@@ -15,12 +15,20 @@ package leetcode.stage2;
 public class day15 {
 
     public String reorderSpaces(String text) {
-        int count = 0;
+        int count = 0, num = 0;
         StringBuilder ret = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
-            count++;
+            if (text.charAt(i) == ' ') {
+                count++;
+            } else {
+                num++;
+                while (text.charAt(i) != ' ') {
+                    i++;
+                }
+            }
+
         }
-        int sub = count/
+        int sub = count /
         return ret.toString();
     }
 

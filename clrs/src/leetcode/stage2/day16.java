@@ -1,5 +1,7 @@
 package leetcode.stage2;
 
+import java.util.Arrays;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -90,4 +92,46 @@ public class day16 {
         return dp[len1][len2];
     }
 
+    public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, dp.length);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (coins[j] <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+
+
+    int res = Integer.MAX_VALUE;
+    public int coinChange1(int[] coins, int amount) {
+        if(coins.length == 0){
+            return -1;
+        }
+
+        findWay(coins,amount,0);
+
+        // 如果没有任何一种硬币组合能组成总金额，返回 -1。
+        if(res == Integer.MAX_VALUE){
+            return -1;
+        }
+        return res;
+    }
+
+    public void findWay(int[] coins,int amount,int count){
+        if(amount < 0){
+            return;
+        }
+        if(amount == 0){
+            res = Math.min(res,count);
+        }
+
+        for(int i = 0;i < coins.length;i++){
+            findWay(coins,amount-coins[i],count+1);
+        }
+    }
 }

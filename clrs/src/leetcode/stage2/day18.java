@@ -29,4 +29,26 @@ public class day18 {
         }
     }
 
+    public TreeNode trimBST_bfs(TreeNode root, int low, int high) {
+        while (root != null && (root.val < low || root.val > high)) {
+            root = root.val < low ? root.right : root.left;
+        }
+        if (root == null) return null;
+        while (root.left != null) {
+            if (root.left.val < low) {
+                root.left = root.left.right;
+            } else {
+                root = root.left;
+            }
+        }
+        while (root.right != null) {
+            if (root.right.val > high) {
+                root.right = root.right.left;
+            } else {
+                root = root.right;
+            }
+        }
+        return root;
+    }
+
 }

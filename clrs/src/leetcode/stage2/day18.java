@@ -34,21 +34,33 @@ public class day18 {
             root = root.val < low ? root.right : root.left;
         }
         if (root == null) return null;
-        while (root.left != null) {
-            if (root.left.val < low) {
-                root.left = root.left.right;
+        TreeNode cur = root;
+        while (cur.left != null) {
+            if (cur.left.val < low) {
+                cur.left = cur.left.right;
             } else {
-                root = root.left;
+                cur = cur.left;
             }
         }
-        while (root.right != null) {
-            if (root.right.val > high) {
-                root.right = root.right.left;
+        cur = root;
+        while (cur.right != null) {
+            if (cur.right.val > high) {
+                cur.right = cur.right.left;
             } else {
-                root = root.right;
+                cur = cur.right;
             }
         }
         return root;
+    }
+
+    public int rangeBitwiseAnd(int m, int n) {
+        int countZero = 0;
+        while (m < n) {
+            m >>= 1;
+            n >>= 1;
+            countZero++;
+        }
+        return m << countZero;
     }
 
 }

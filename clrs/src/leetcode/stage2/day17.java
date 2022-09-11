@@ -12,7 +12,7 @@ package leetcode.stage2;
  * @github : https://github.com/frankRenlf
  * @Description :
  */
-public class da17 {
+public class day17 {
 
     public int minOperations(String[] logs) {
         int pos = 0;

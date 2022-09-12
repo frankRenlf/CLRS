@@ -60,13 +60,15 @@ public class day1 {
             return;
         }
         for (int i = begin; i < end; i++) {
+            if (i > begin && candidates[i] == candidates[i - 1]) continue;
             if (target - candidates[i] >= 0) {
                 stack.push(candidates[i]);
-                combine_dfs(candidates, target - candidates[i], begin + 1, end, ret, stack);
+                combine_dfs(candidates, target - candidates[i], i + 1, end, ret, stack);
                 stack.pop();
+            } else {
+                return;
             }
         }
-
     }
 
 

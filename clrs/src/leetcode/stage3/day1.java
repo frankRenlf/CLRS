@@ -1,8 +1,6 @@
 package leetcode.stage3;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -46,6 +44,31 @@ public class day1 {
         }
         return max;
     }
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ret = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        int end = candidates.length;
+        Arrays.sort(candidates);
+        combine_dfs(candidates, target, 0, end, ret, stack);
+        return ret;
+    }
+
+    private void combine_dfs(int[] candidates, int target, int begin, int end, List<List<Integer>> ret, Stack<Integer> stack) {
+        if (target == 0) {
+            ret.add(new ArrayList<>(stack));
+            return;
+        }
+        for (int i = begin; i < end; i++) {
+            if (target - candidates[i] >= 0) {
+                stack.push(candidates[i]);
+                combine_dfs(candidates, target - candidates[i], begin + 1, end, ret, stack);
+                stack.pop();
+            }
+        }
+
+    }
+
 
     int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);

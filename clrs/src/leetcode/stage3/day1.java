@@ -1,6 +1,8 @@
 package leetcode.stage3;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.

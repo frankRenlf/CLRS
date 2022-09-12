@@ -30,23 +30,23 @@ public class day1 {
 
     public int maxPoints(int[][] ps) {
         int n = ps.length;
-        int ans = 1;
+        int max = 0;
         for (int i = 0; i < n; i++) {
+            int[] pivot = ps[i];
             Map<String, Integer> map = new HashMap<>();
-            // 由当前点 i 发出的直线所经过的最多点数量
-            int max = 0;
             for (int j = i + 1; j < n; j++) {
-                int x1 = ps[i][0], y1 = ps[i][1], x2 = ps[j][0], y2 = ps[j][1];
-                int a = x1 - x2, b = y1 - y2;
-                int k = gcd(a, b);
-                String key = (a / k) + "_" + (b / k);
-                map.put(key, map.getOrDefault(key, 0) + 1);
-                max = Math.max(max, map.get(key));
+                int x1 = pivot[0], y1 = pivot[1];
+                int x2 = ps[j][0], y2 = ps[j][1];
+                int subX = x1 - x2, subY = y1 - y2;
+                int k = gcd(subX, subY);
+                String key = subX / k + "_" + subY / k;
+                map.put(key, map.getOrDefault(key, 1) + 1);
+                max = Math.max(map.get(key), max);
             }
-            ans = Math.max(ans, max + 1);
         }
-        return ans;
+        return max;
     }
+
     int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
     }

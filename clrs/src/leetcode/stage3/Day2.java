@@ -17,19 +17,24 @@ import java.util.List;
  */
 public class Day2 {
 
-    // 1 3 6
+    // 1 3 6 10
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         int n = nums.length;
         int count = 0;
         int mul = 1;
         for (int end = 0, begin = 0; end < n; end++) {
             mul *= nums[end];
-            if (mul < k) {
-                count += (end - begin + 1);
-            }else {
-
+            while (begin <= end & mul >= k) {
+                mul /= nums[begin];
+                begin++;
             }
+            count += (end - begin + 1);
         }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(day2.numSubarrayProductLessThanK(new int[]{10, 5, 2, 6}, 100));
     }
 
     public int maximumSwap2(int num) {
@@ -89,7 +94,7 @@ public class Day2 {
 
     static Day2 day2 = new Day2();
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         System.out.println(day2.maximumSwap(9973));
     }
 

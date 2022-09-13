@@ -33,7 +33,7 @@ public class Day2 {
         return count;
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         System.out.println(day2.numSubarrayProductLessThanK(new int[]{10, 5, 2, 6}, 100));
     }
 
@@ -92,7 +92,27 @@ public class Day2 {
         return ret;
     }
 
+    public int findMin(int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int right = n - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return nums[left];
+    }
+
+
     static Day2 day2 = new Day2();
+
+    public static void main(String[] args) {
+        System.out.println(day2.findMin(new int[]{ 3, 4, 5,1}));
+    }
 
     public static void main2(String[] args) {
         System.out.println(day2.maximumSwap(9973));

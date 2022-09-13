@@ -17,6 +17,32 @@ import java.util.List;
  */
 public class Day2 {
 
+    public int maximumSwap2(int num) {
+        char[] nums = String.valueOf(num).toCharArray();
+        int n = nums.length;
+        int maxIndex = n - 1;
+        int index1 = -1, index2 = -1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (nums[i] > nums[maxIndex]) {
+                maxIndex = i;
+            } else if (nums[i] < nums[maxIndex]) {
+                index1 = i;
+                index2 = maxIndex;
+            }
+        }
+        if (index1 >= 0) {
+            swap(nums, index1, index2);
+            return Integer.parseInt(new String(nums));
+        }
+        return num;
+    }
+
+    private void swap(char[] nums, int index1, int index2) {
+        char tmp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = tmp;
+    }
+
     public int maximumSwap(int num) {
         List<Integer> list = new ArrayList<>();
         while (num != 0) {
@@ -39,7 +65,7 @@ public class Day2 {
             }
         }
         int ret = 0;
-        for (int i = 0;i <n; i++) {
+        for (int i = 0; i < n; i++) {
             ret *= 10;
             ret += list.get(i);
         }
@@ -49,7 +75,7 @@ public class Day2 {
     static Day2 day2 = new Day2();
 
     public static void main(String[] args) {
-        System.out.println(day2.maximumSwap(2736));
+        System.out.println(day2.maximumSwap(9973));
     }
 
 

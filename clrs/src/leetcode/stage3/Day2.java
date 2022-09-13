@@ -17,6 +17,21 @@ import java.util.List;
  */
 public class Day2 {
 
+    // 1 3 6
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        int n = nums.length;
+        int count = 0;
+        int mul = 1;
+        for (int end = 0, begin = 0; end < n; end++) {
+            mul *= nums[end];
+            if (mul < k) {
+                count += (end - begin + 1);
+            }else {
+
+            }
+        }
+    }
+
     public int maximumSwap2(int num) {
         char[] nums = String.valueOf(num).toCharArray();
         int n = nums.length;

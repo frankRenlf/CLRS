@@ -21,7 +21,7 @@ public class Day6 {
         int n = s.length();
         int[] cnt = new int[26];
         Arrays.fill(cnt, -1);
-        int maxLen = 0;
+        int maxLen = -1;
         for (int i = 0; i < n; i++) {
             int pos = s.charAt(i) - 'a';
             if (cnt[pos] == -1) {

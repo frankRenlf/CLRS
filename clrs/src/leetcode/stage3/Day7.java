@@ -43,7 +43,7 @@ public class Day7 {
                     Set<Integer> set = new HashSet<>();
                     for (int x = 0; x < 4; x++) {
                         int nx = i + d[x], ny = j + d[x + 1];
-                        if (isValid(grid, nx, ny) || sign[nx][ny] == 0 || set.contains(sign[nx][ny])) {
+                        if (!isValid(grid, nx, ny) || sign[nx][ny] == 0 || set.contains(sign[nx][ny])) {
                             continue;
                         }
                         tmp += map.get(sign[nx][ny]);

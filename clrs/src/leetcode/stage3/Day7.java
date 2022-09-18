@@ -1,7 +1,9 @@
 package leetcode.stage3;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,18 +24,36 @@ public class Day7 {
         int row = grid.length, col = grid[0].length;
         int[][] sign = new int[row][col];
         Map<Integer, Integer> map = new HashMap<>();
+        int max = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1 && sign[i][j] == 0) {
                     int key = i * row + j + 1;
-                    map.put(key, calArea(grid, i, j, key, sign));
+                    int val = calArea(grid, i, j, key, sign);
+                    map.put(key, val);
+                    max = Math.max(val, max);
                 }
             }
         }
+        int ret = max;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
+                if (grid[i][j] == 0) {
+                    int tmp = 1;
+                    Set<Integer> set = new HashSet<>();
+                    for (int x = 0; x < 4; x++) {
+                        int nx = i + d[x], ny = j + d[x + 1];
+                        if (isValid(grid, nx, ny) || sign[nx][ny] == 0 || set.contains(sign[nx][ny])) {
+                            continue;
+                        }
+                        tmp += map.get(sign[nx][ny]);
+                        set.add(sign[nx][ny]);
+                    }
+                    ret = Math.max(ret, tmp);
+                }
             }
         }
+        return ret;
     }
 
     static int[] d = {0, -1, 0, 1, 0};
@@ -42,7 +62,7 @@ public class Day7 {
         int ret = 1;
         sign[i][j] = key;
         for (int x = 0; x < 4; x++) {
-            int nx = x + d[x], ny = j + d[x + 1];
+            int nx = i + d[x], ny = j + d[x + 1];
             if (isValid(grid, nx, ny) && grid[nx][ny] == 1 && sign[nx][ny] == 0) {
                 ret += calArea(grid, nx, ny, key, sign);
             }

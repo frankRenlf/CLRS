@@ -1,5 +1,9 @@
 package leetcode.stage3;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 /**
  * Created with IntelliJ IDEA.
  *

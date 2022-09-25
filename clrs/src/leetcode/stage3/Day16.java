@@ -2,6 +2,7 @@ package leetcode.stage3;
 
 import leetcode.algorithm.TreeNode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,8 +21,25 @@ import java.util.List;
 public class Day16 {
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-
+        List<List<Integer>> ret = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        findPath(ret, list, root, targetSum);
+        return ret;
     }
+
+    private void findPath(List<List<Integer>> ret, List<Integer> list, TreeNode root, int targetSum) {
+        if (root == null) {
+            return;
+        }
+        list.add(root.val);
+        if (root.left == null && root.right == null && targetSum - root.val == 0) {
+            ret.add(new ArrayList<>(list));
+        }
+        findPath(ret, list, root.left, targetSum - root.val);
+        findPath(ret, list, root.right, targetSum - root.val);
+        list.remove(list.size() - 1);
+    }
+
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
         int m1 = minDepth(root.left);

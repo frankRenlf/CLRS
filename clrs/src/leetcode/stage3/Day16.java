@@ -2,9 +2,7 @@ package leetcode.stage3;
 
 import leetcode.algorithm.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +16,42 @@ import java.util.List;
  * @github : https://github.com/frankRenlf
  * @Description :
  */
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+class Solution {
+    public Node cloneGraph(Node node) {
+        Map<Node,Node> map = new HashMap<>();
+        return cg(node,map);
+    }
+    private Node cg(Node node,Map map){
+        if(node==null){
+            return node;
+        }
+        if(map.containsKey(node)){
+            return map.get(node);
+        }
+        Node clo = new Node(node.val,new ArrayList<>());
+        map.put(node,clo);
+        for(Node nei:node.neighbors){
+            cg(node,map);
+        }
+        return node;
+    }
+}
 public class Day16 {
 
     public static void main(String[] args) {
@@ -117,7 +151,7 @@ public class Day16 {
 
 
     static int[] check = {0, 0, 1, -1, -1, 1, 1, -1, 0, 1};
-
+    Map<Integer,Integer> map = new HashMap<>();
     public int rotatedDigits_vio(int n) {
         int ans = 0;
         for (int i = 1; i <= n; ++i) {

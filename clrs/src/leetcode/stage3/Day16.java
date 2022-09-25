@@ -70,7 +70,8 @@ public class Day16 {
     static Day16 day16 = new Day16();
 
     public static void main(String[] args) {
-        day16.rotatedDigits(12);
+//        day16.rotatedDigits(12);
+        System.out.println(5|-1);
     }
 
 }

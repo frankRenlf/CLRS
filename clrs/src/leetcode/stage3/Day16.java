@@ -60,9 +60,17 @@ public class Day16 {
         if (!isLimit && dp[i][hasDiff] >= 0) return dp[i][hasDiff];
         int res = 0;
         int up = isLimit ? s[i] - '0' : 9;
-        for (int d = 0; d <= up; ++d) // 枚举要填入的数字 d
-            if (DIFFS[d] != -1) // d 不是 3/4/7
+        for (int d = 0; d <= up; ++d) {
+            // 枚举要填入的数字 d
+            // d 不是 3/4/7
+            if (DIFFS[d] != -1) {
                 res += f(i + 1, hasDiff | DIFFS[d], isLimit && d == up);
+                if (i == 0) {
+                    System.out.println(res);
+                }
+
+            }
+        }
         if (!isLimit) dp[i][hasDiff] = res;
         return res;
     }
@@ -70,8 +78,8 @@ public class Day16 {
     static Day16 day16 = new Day16();
 
     public static void main(String[] args) {
-//        day16.rotatedDigits(12);
-        System.out.println(5|-1);
+        day16.rotatedDigits(22);
+//        System.out.println(5|-1);
     }
 
 }

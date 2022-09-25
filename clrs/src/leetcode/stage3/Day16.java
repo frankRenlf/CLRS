@@ -16,6 +16,28 @@ import java.util.Arrays;
  */
 public class Day16 {
 
+    static int[] check = {0, 0, 1, -1, -1, 1, 1, -1, 0, 1};
+
+    public int rotatedDigits_vio(int n) {
+        int ans = 0;
+        for (int i = 1; i <= n; ++i) {
+            String num = String.valueOf(i);
+            boolean valid = true, diff = false;
+            for (int j = 0; j < num.length(); ++j) {
+                char ch = num.charAt(j);
+                if (check[ch - '0'] == -1) {
+                    valid = false;
+                } else if (check[ch - '0'] == 1) {
+                    diff = true;
+                }
+            }
+            if (valid && diff) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+
     static int[] DIFFS = {0, 0, 1, -1, -1, 1, 1, -1, 0, 1};
 
     char[] s;
@@ -43,7 +65,8 @@ public class Day16 {
         if (!isLimit) dp[i][hasDiff] = res;
         return res;
     }
-    static Day16 day16=new Day16();
+
+    static Day16 day16 = new Day16();
 
     public static void main(String[] args) {
         day16.rotatedDigits(12);

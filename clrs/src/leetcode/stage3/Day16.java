@@ -3,6 +3,7 @@ package leetcode.stage3;
 import leetcode.algorithm.TreeNode;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +18,10 @@ import java.util.Arrays;
  * @Description :
  */
 public class Day16 {
+
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+
+    }
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
         int m1 = minDepth(root.left);

@@ -53,7 +53,8 @@ public class Day16 {
 
     int f(int i, int hasDiff, boolean isLimit) {
         if (i == s.length) {
-            System.out.println(hasDiff);
+//            System.out.printf("dp[%d][%d]:%d",i,hasDiff,);
+            System.out.println(i + ":" + hasDiff);
             return hasDiff; // 只有包含 2/5/6/9 才算一个好数
         }
         if (!isLimit && dp[i][hasDiff] >= 0) return dp[i][hasDiff];

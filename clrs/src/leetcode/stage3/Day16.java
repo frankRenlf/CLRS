@@ -20,20 +20,35 @@ import java.util.List;
  */
 public class Day16 {
 
-    public int sumNumbers(TreeNode root) {
-        return dfs(root, 0);
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+        System.out.println(day16.sumNumbers(root));
     }
 
-    public int dfs(TreeNode root, int prevSum) {
-        if (root == null) {
-            return 0;
+    public int sumNumbers(TreeNode root) {
+        StringBuffer str = new StringBuffer();
+        List<StringBuffer> list1 = new ArrayList<>();
+        calPath(list1, str, root);
+        System.out.println(Arrays.toString(list1.toArray()));
+        System.out.println(str);
+        int sum = 0;
+        for (StringBuffer s : list1) {
+            sum += Integer.parseInt(s.toString());
         }
-        int sum = prevSum * 10 + root.val;
+        return sum;
+    }
+
+    private void calPath(List<StringBuffer> list1, StringBuffer str, TreeNode root) {
+        if (root == null) return;
+        str.append(root.val);
         if (root.left == null && root.right == null) {
-            return sum;
-        } else {
-            return dfs(root.left, sum) + dfs(root.right, sum);
+            list1.add(new StringBuffer(str));
+            str.deleteCharAt(str.length() - 1);
+            return;
         }
+        calPath(list1, str, root.left);
+        calPath(list1, str, root.right);
+        str.deleteCharAt(str.length() - 1);
     }
 
 
@@ -162,7 +177,7 @@ public class Day16 {
 
     static Day16 day16 = new Day16();
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         day16.rotatedDigits(22);
 //        System.out.println(5|-1);
     }

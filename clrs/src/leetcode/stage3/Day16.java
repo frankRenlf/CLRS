@@ -21,14 +21,26 @@ import java.util.List;
 public class Day16 {
 
     public int sumNumbers(TreeNode root) {
-        
+        return dfs(root, 0);
+    }
+
+    public int dfs(TreeNode root, int prevSum) {
+        if (root == null) {
+            return 0;
+        }
+        int sum = prevSum * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            return sum;
+        } else {
+            return dfs(root.left, sum) + dfs(root.right, sum);
+        }
     }
 
 
     List<TreeNode> list = new ArrayList<>();
 
     public void flatten(TreeNode root) {
-        if(root==null)return;
+        if (root == null) return;
         addRoot(root);
         TreeNode cur = root;
         for (int i = 1; i < list.size(); i++) {
@@ -44,6 +56,7 @@ public class Day16 {
         addRoot(root.left);
         addRoot((root.right));
     }
+
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> ret = new ArrayList<>();
         List<Integer> list = new ArrayList<>();

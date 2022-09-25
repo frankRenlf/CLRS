@@ -1,5 +1,7 @@
 package leetcode.stage3;
 
+import leetcode.algorithm.TreeNode;
+
 import java.util.Arrays;
 
 /**
@@ -15,6 +17,29 @@ import java.util.Arrays;
  * @Description :
  */
 public class Day16 {
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        int m1 = minDepth(root.left);
+        int m2 = minDepth(root.right);
+        //1.如果左孩子和右孩子有为空的情况，直接返回m1+m2+1
+        //2.如果都不为空，返回较小深度+1
+        return root.left == null || root.right == null ? m1 + m2 + 1 : Math.min(m1, m2) + 1;
+    }
+
+    public boolean isValidBST(TreeNode root) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isValidBST(TreeNode node, long lower, long upper) {
+        if (node == null) {
+            return true;
+        }
+        if (node.val <= lower || node.val >= upper) {
+            return false;
+        }
+        return isValidBST(node.left, lower, node.val) && isValidBST(node.right, node.val, upper);
+    }
+
 
     static int[] check = {0, 0, 1, -1, -1, 1, 1, -1, 0, 1};
 

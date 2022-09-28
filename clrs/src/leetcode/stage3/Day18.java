@@ -34,20 +34,23 @@ public class Day18 {
     }
 
     public List<String> binaryTreePaths(TreeNode root) {
-        List<String> ret = new ArrayList<>();
-        StringBuffer str = new StringBuffer();
-        findPath(ret, root, str);
-        return ret;
+        List<String> paths = new ArrayList<String>();
+        constructPaths(root, "", paths);
+        return paths;
     }
 
-    private void findPath(List<String> ret, TreeNode root, StringBuffer str) {
-        if (root == null) return;
-        str.append(root.val);
-        if (root.left == null && root.right == null) {
-            ret.add(new String(str));
+    public void constructPaths(TreeNode root, String path, List<String> paths) {
+        if (root != null) {
+            StringBuilder pathSB = new StringBuilder(path);
+            pathSB.append(Integer.toString(root.val));
+            if (root.left == null && root.right == null) {  // 当前节点是叶子节点
+                paths.add(pathSB.toString());  // 把路径加入到答案中
+            } else {
+                pathSB.append("->");  // 当前节点不是叶子节点，继续递归遍历
+                constructPaths(root.left, pathSB.toString(), paths);
+                constructPaths(root.right, pathSB.toString(), paths);
+            }
         }
-        findPath(ret, root.left, str);
-        findPath(ret, root.right, str);
     }
 
 }

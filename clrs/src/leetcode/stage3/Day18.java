@@ -1,5 +1,10 @@
 package leetcode.stage3;
 
+import leetcode.algorithm.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -26,6 +31,23 @@ public class Day18 {
             }
         }
         return true;
+    }
+
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> ret = new ArrayList<>();
+        StringBuffer str = new StringBuffer();
+        findPath(ret, root, str);
+        return ret;
+    }
+
+    private void findPath(List<String> ret, TreeNode root, StringBuffer str) {
+        if (root == null) return;
+        str.append(root.val);
+        if (root.left == null && root.right == null) {
+            ret.add(new String(str));
+        }
+        findPath(ret, root.left, str);
+        findPath(ret, root.right, str);
     }
 
 }

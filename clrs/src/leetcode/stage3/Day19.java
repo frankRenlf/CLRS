@@ -2,7 +2,10 @@ package leetcode.stage3;
 
 import leetcode.algorithm.TreeNode;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +20,23 @@ import java.util.PriorityQueue;
  * @Description :
  */
 public class Day19 {
+
+    public int kthSmallest2(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            --k;
+            if (k == 0) {
+                break;
+            }
+            root = root.right;
+        }
+        return root.val;
+    }
 
     public int kthSmallest(TreeNode root, int k) {
         PriorityQueue<Integer> queue = new PriorityQueue<>();

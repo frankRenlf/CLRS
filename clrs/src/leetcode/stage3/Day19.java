@@ -20,6 +20,24 @@ import java.util.Stack;
  * @Description :
  */
 public class Day19 {
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1,new TreeNode(2,new TreeNode(0),new TreeNode(4)),new TreeNode(3));
+
+        day19.inorder(root);
+    }
+
+    public void inorder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            System.out.println(root.val);
+            root = root.right;
+        }
+    }
 
     public int kthSmallest2(TreeNode root, int k) {
         Stack<TreeNode> stack = new Stack<>();
@@ -29,10 +47,10 @@ public class Day19 {
                 root = root.left;
             }
             root = stack.pop();
-            --k;
-            if (k == 0) {
-                break;
-            }
+//            --k;
+//            if (k == 0) {
+//                break;
+//            }
             root = root.right;
         }
         return root.val;
@@ -75,7 +93,7 @@ public class Day19 {
 
     static Day19 day19 = new Day19();
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         System.out.println(day19.isFlipedString("waterbottle",
                 "erbottlewat"));
     }

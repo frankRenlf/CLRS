@@ -2,6 +2,8 @@ package leetcode.stage3;
 
 import leetcode.algorithm.TreeNode;
 
+import java.util.PriorityQueue;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -15,6 +17,22 @@ import leetcode.algorithm.TreeNode;
  * @Description :
  */
 public class Day19 {
+
+    public int kthSmallest(TreeNode root, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        findNode(root, queue);
+        while (!queue.isEmpty() && k > 1) {
+            queue.poll();
+        }
+        return queue.poll();
+    }
+
+    private void findNode(TreeNode root, PriorityQueue<Integer> queue) {
+        if (root == null) return;
+        queue.add(root.val);
+        findNode(root.left, queue);
+        findNode(root.right, queue);
+    }
 
     public int countNodes(TreeNode root) {
         return calNode(root);

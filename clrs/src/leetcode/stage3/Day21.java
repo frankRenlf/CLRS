@@ -14,6 +14,30 @@ package leetcode.stage3;
  */
 public class Day21 {
 
+    public boolean isMatch(String s, String p) {
+        int sl = s.length();
+        int pl = p.length();
+        boolean[][] dp = new boolean[sl + 1][pl + 1];
+        dp[0][0] = true;
+        for (int i = 1; i <= pl; i++) {
+            if (p.charAt(i - 1) == '*') {
+                dp[0][i] = true;
+            } else {
+                break;
+            }
+        }
+        for (int i = 1; i <= sl; i++) {
+            for (int j = 1; j <= pl; j++) {
+                if (p.charAt(j - 1) == '*') {
+                    dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
+                } else if (p.charAt(j - 1) == '?' || s.charAt(i - 1) == p.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                }
+            }
+        }
+        return dp[sl][pl];
+    }
+
     public String reformatNumber(String number) {
         char[] arr = number.toCharArray();
         StringBuilder str = new StringBuilder();

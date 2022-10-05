@@ -1,5 +1,10 @@
 package leetcode.stage3;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -32,6 +37,29 @@ public class Day24 {
         }
         ans += leftCount;
         return ans;
+    }
+
+    public List<String> subdomainVisits(String[] cpdomains) {
+        int n = cpdomains.length;
+        List<String> list = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        for (String cpdomain : cpdomains) {
+            String domain = cpdomain;
+            int space = domain.indexOf(' ');
+            int cnt = Integer.parseInt(domain.substring(0, space));
+            domain = domain.substring(space + 1);
+            map.put(domain, map.getOrDefault(domain, 0) + cnt);
+            for (int i = 0; i < domain.length(); i++) {
+                if (domain.charAt(i) == '.') {
+                    String sub = domain.substring(i + 1);
+                    map.put(sub, map.getOrDefault(sub, 0) + cnt);
+                }
+            }
+        }
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            list.add(entry.getValue() + " " + entry.getKey());
+        }
+        return list;
     }
 
 }

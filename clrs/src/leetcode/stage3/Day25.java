@@ -14,44 +14,41 @@ package leetcode.stage3;
  */
 public class Day25 {
 
-    private int[] arr;
-
     public int[] threeEqualParts(int[] arr) {
-        this.arr = arr;
-        int cnt = 0;
         int n = arr.length;
-        for (int v : arr) {
-            cnt += v;
+        int cnt = 0;
+        for (int x : arr) {
+            cnt += x;
         }
         if (cnt % 3 != 0) {
             return new int[]{-1, -1};
-        }
-        if (cnt == 0) {
+        } else if (cnt == 0) {
             return new int[]{0, n - 1};
         }
         cnt /= 3;
-
-        int i = find(1), j = find(cnt + 1), k = find(cnt * 2 + 1);
-        while (k < n && arr[i] == arr[j] && arr[j] == arr[k]) {
-            ++i;
-            ++j;
-            ++k;
-        }
-        // i,j,n
-        // 0 i-1, i j-1
-        // 0 i-1, i j-1, j n-1;
-        return k == n ? new int[]{i - 1, j} : new int[]{-1, -1};
-    }
-
-    private int find(int x) {
-        int s = 0;
-        for (int i = 0; i < arr.length; ++i) {
-            s += arr[i];
-            if (s == x) {
-                return i;
+        int[] pos = new int[]{find(arr, 1), find(arr, cnt + 1), find(arr, cnt * 2 + 1)};
+        boolean key = true;
+        while (pos[2] < n) {
+            for (int i = 1; i < 3; i++) {
+                if (arr[pos[i - 1]] != arr[pos[i]]) {
+                    key = false;
+                    break;
+                }
+            }
+            if (!key) break;
+            for (int i = 0; i < 3; i++) {
+                pos[i]++;
             }
         }
-        return 0;
+        return pos[2] == n ? new int[]{pos[0] - 1, pos[1]} : new int[]{-1, -1};
+    }
+
+    private int find(int[] arr, int x) {
+        int i = 0;
+        for (; x > 0; i++) {
+            x -= arr[i];
+        }
+        return i;
     }
 
 }

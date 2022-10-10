@@ -42,7 +42,7 @@ public class T801 {
             int cur1 = n1;
             n0 = n1 = n;
             if (nums1[i] > nums1[i - 1] && nums2[i] > nums2[i - 1]) {
-                // n0 = cur0;
+                n0 = cur0;
                 n1 = cur1 + 1;
             }
             if (nums1[i] > nums2[i - 1] && nums2[i] > nums1[i - 1]) {
@@ -50,7 +50,7 @@ public class T801 {
                 n1 = Math.min(n1, cur0 + 1);
             }
         }
-        return Math.min(n0,n1);
+        return Math.min(n0, n1);
     }
 
 }

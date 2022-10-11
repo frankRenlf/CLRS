@@ -24,6 +24,7 @@ public class T1790 {
                 list.add(i);
             }
         }
+        if (list.size() == 0) return true;
         if (list.size() != 2) return false;
         int p1 = list.get(0), p2 = list.get(1);
         return s1.charAt(p1) == s2.charAt(p2)

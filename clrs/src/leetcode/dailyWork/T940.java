@@ -28,12 +28,12 @@ public class T940 {
 
     private void findSub(char[] arr, int n, int index) {
         if (index == n) return;
-        Set<Character> set = new HashSet<>();
+        int[] contain = new int[26];
         for (int i = index; i < n; i++) {
-            if (i > index && set.contains(arr[i])) {
+            if (i > index && contain[122 - arr[i]] != 0) {
                 continue;
             }
-            set.add(arr[i]);
+            contain[122 - arr[i]]++;
             sum++;
             findSub(arr, n, i + 1);
         }
@@ -42,7 +42,7 @@ public class T940 {
     static T940 t940 = new T940();
 
     public static void main(String[] args) {
-        System.out.println(t940.distinctSubseqII("aba"));
+        System.out.println(t940.distinctSubseqII("abc"));
     }
 
 }

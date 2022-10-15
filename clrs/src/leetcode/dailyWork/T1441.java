@@ -22,11 +22,11 @@ public class T1441 {
         List<String> list = new ArrayList<>();
         for (int i = 1, index = 0; i <= target[length - 1]; i++) {
             if (target[index] == i) {
-                list.add("push");
+                list.add("Push");
                 index++;
             } else {
-                list.add("push");
-                list.add("pop");
+                list.add("Push");
+                list.add("Pop");
             }
         }
         return list;

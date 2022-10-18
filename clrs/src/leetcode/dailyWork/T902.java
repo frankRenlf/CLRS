@@ -22,14 +22,17 @@ public class T902 {
         dp[0][1] = 1;
         for (int i = 1; i <= k; i++) {
             for (String digit : digits) {
+                // add each element to [i][0] which is smaller than cur
                 if (digit.charAt(0) < s.charAt(i - 1)) {
                     dp[i][0] += dp[i - 1][1];
+                    // add each element to [i][1] which is equal to cur
                 } else if (digit.charAt(0) == s.charAt(i - 1)) {
                     dp[i][1] = dp[i - 1][1];
                 } else {
                     break;
                 }
             }
+            //
             if (i > 1) {
                 dp[i][0] += len + dp[i - 1][0] * len;
             }

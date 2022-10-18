@@ -33,8 +33,9 @@ public class T902 {
                 }
             }
             //
+            dp[i][0] += dp[i - 1][0] * len;
             if (i > 1) {
-                dp[i][0] += len + dp[i - 1][0] * len;
+                dp[i][0] += len;
             }
         }
         return dp[k][0] + dp[k][1];

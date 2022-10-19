@@ -69,12 +69,18 @@ public class T329 {
 
     private int findPath(int[][] matrix, int i, int j) {
         int ret = 1;
+        int max = 0;
         for (int pos = 0; pos < 4; pos++) {
-            if (check(matrix, i + arr[pos], j + arr[pos + 1])) {
-                ret += findPath(matrix, i + arr[pos], j + arr[pos + 1]);
+            int row = i + arr[pos];
+            int col = j + arr[pos + 1];
+            if (check(matrix, row, col) && matrix[row][col] > matrix[i][j]) {
+                int add = findPath(matrix, i + arr[pos], j + arr[pos + 1]);
+                ret += add;
+                max = Math.max(ret, max);
+                ret -= add;
             }
         }
-        return ret;
+        return max;
     }
 
     static T329 t329 = new T329();

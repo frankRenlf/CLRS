@@ -14,7 +14,7 @@ package leetcode.dailyWork;
  */
 
 class Solution {
-    public int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    public int[] dirs = {0, 1, 0, -1, 0};
     public int rows, columns;
 
     public int longestIncreasingPath(int[][] matrix) {
@@ -38,8 +38,8 @@ class Solution {
             return memo[row][column];
         }
         ++memo[row][column];
-        for (int[] dir : dirs) {
-            int newRow = row + dir[0], newColumn = column + dir[1];
+        for (int i = 0; i < 4; i++) {
+            int newRow = row + dirs[i], newColumn = column + dirs[i + 1];
             if (newRow >= 0 && newRow < rows && newColumn >= 0 && newColumn < columns && matrix[newRow][newColumn] > matrix[row][column]) {
                 memo[row][column] = Math.max(memo[row][column], dfs(matrix, newRow, newColumn, memo) + 1);
             }
@@ -49,8 +49,6 @@ class Solution {
 }
 
 public class T329 {
-
-
     static int[] arr = new int[]{0, 1, 0, -1, 0};
 
     public int longestIncreasingPath(int[][] matrix) {

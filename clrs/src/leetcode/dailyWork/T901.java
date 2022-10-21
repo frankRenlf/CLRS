@@ -16,16 +16,7 @@ import java.util.Stack;
  * @github : https://github.com/frankRenlf
  * @Description :
  */
-//class StockSpanner {
-//
-//    public StockSpanner() {
-//
-//    }
-//
-//    public int next(int price) {
-//
-//    }
-//}
+
 class StockSpanner {
 
     Stack<int[]> stack;

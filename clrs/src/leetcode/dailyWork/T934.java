@@ -16,6 +16,8 @@ import java.util.Queue;
  * @Description :
  */
 public class T934 {
+
+    
         public int shortestBridge(int[][] grid) {
             int n = grid.length;
             int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};

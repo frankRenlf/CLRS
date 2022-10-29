@@ -24,7 +24,7 @@ public class T1773 {
         else index = 2;
         int ret = 0;
         for (List<String> elem : items) {
-            if (items.get(index).equals(ruleValue)) {
+            if (elem.get(index).equals(ruleValue)) {
                 ret++;
             }
         }

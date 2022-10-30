@@ -25,15 +25,15 @@ public class T784 {
     }
 
     private void find(char[] arr, int i, int end) {
-        if (i == end) {
+        while (i < end && Character.isDigit(arr[i])) {
+            i++;
+        }
+        if (i >= end) {
             list.add(new String(arr));
             return;
         }
-        if (Character.isAlphabetic(arr[i])) {
-            find(arr, i + 1, end);
-            arr[i] ^= 32;
-            find(arr, i + 1, end);
-            arr[i] ^= 32;
-        }
+        find(arr, i + 1, end);
+        arr[i] ^= 32;
+        find(arr, i + 1, end);
     }
 }

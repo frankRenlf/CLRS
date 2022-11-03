@@ -16,9 +16,10 @@ public class T1668 {
 
     public int maxRepeating1(String sequence, String word) {
         int ret = 0;
+        String tmp = new String(word);
         while (sequence.contains(word)) {
             ret++;
-            word += word;
+            word += tmp;
         }
         return ret;
     }
@@ -29,14 +30,14 @@ public class T1668 {
         for (int i = 0; i < sl; ) {
             int j = 0;
             int res = 0;
-            while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + res * j)) {
+            while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + (res + 1) * j)) {
                 j++;
                 if (j == wl) {
                     j = 0;
                     res++;
                 }
             }
-            i += j;
+            i++;
             ret = Math.max(res, ret);
         }
         return ret;

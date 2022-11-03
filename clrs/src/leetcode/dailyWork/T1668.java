@@ -19,8 +19,8 @@ public class T1668 {
         int sl = sequence.length(), wl = word.length();
         for (int i = 0; i < sl; i++) {
             int j = 0;
-            while (word.charAt(j) == sequence.charAt(i + j)) {
-                while (j < wl && word.charAt(j) == sequence.charAt(i + j)) {
+            while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + j)) {
+                while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + j)) {
                     j++;
                 }
                 ret += j == wl ? 1 : 0;

@@ -27,6 +27,9 @@ public class T1668 {
                 i += j;
                 j = 0;
             }
+            if (i < sl) {
+                i -= j;
+            }
         }
         return ret;
     }

@@ -14,22 +14,30 @@ package leetcode.dailyWork;
  */
 public class T1668 {
 
+    public int maxRepeating1(String sequence, String word) {
+        int ret = 0;
+        while (sequence.contains(word)) {
+            ret++;
+            word += word;
+        }
+        return ret;
+    }
+
     public int maxRepeating(String sequence, String word) {
         int ret = 0;
         int sl = sequence.length(), wl = word.length();
-        for (int i = 0; i < sl; i++) {
+        for (int i = 0; i < sl; ) {
             int j = 0;
-            while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + j)) {
-                while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + j)) {
-                    j++;
+            int res = 0;
+            while (j < wl && i + j < sl && word.charAt(j) == sequence.charAt(i + res * j)) {
+                j++;
+                if (j == wl) {
+                    j = 0;
+                    res++;
                 }
-                ret += j == wl ? 1 : 0;
-                i += j;
-                j = 0;
             }
-            if (i < sl) {
-                i -= j;
-            }
+            i += j;
+            ret = Math.max(res, ret);
         }
         return ret;
     }

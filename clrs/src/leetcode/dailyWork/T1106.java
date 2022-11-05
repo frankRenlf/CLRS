@@ -1,5 +1,7 @@
 package leetcode.dailyWork;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -17,7 +19,7 @@ import java.util.Stack;
 public class T1106 {
 
     public boolean parseBoolExpr(String expression) {
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<Character>();
         int n = expression.length();
         for (int i = 0; i < n; i++) {
             char c = expression.charAt(i);
@@ -38,16 +40,11 @@ public class T1106 {
                 stack.pop();
                 char op = stack.pop();
                 switch (op) {
-                    case '!':
-                        stack.push(f == 1 ? 't' : 'f');
-                        break;
-                    case '&':
-                        stack.push(f == 0 ? 't' : 'f');
-                        break;
-                    case '|':
-                        stack.push(t > 0 ? 't' : 'f');
-                        break;
-                    default:
+                    case '!' -> stack.push(f == 1 ? 't' : 'f');
+                    case '&' -> stack.push(f == 0 ? 't' : 'f');
+                    case '|' -> stack.push(t > 0 ? 't' : 'f');
+                    default -> {
+                    }
                 }
             }
         }

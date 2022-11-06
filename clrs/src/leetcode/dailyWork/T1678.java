@@ -27,7 +27,7 @@ public class T1678 {
                 }
             } else {
                 stringBuffer.append('G');
-                i += 2;
+                i += 1;
             }
         }
         return stringBuffer.toString();

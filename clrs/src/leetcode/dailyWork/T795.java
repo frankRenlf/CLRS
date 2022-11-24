@@ -15,7 +15,19 @@ package leetcode.dailyWork;
 public class T795 {
 
     public int numSubarrayBoundedMax(int[] nums, int left, int right) {
-        
+        int ret = 0;
+        int l = 0, r = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > right) l = i;
+            if (nums[i] >= left) r = i;
+            ret += r - l;
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) {
+        T795 t795 = new T795();
+        System.out.println(t795.numSubarrayBoundedMax(new int[]{2, 9, 2, 5, 6}, 2, 8));
     }
 
 }

@@ -15,7 +15,7 @@ package leetcode.dailyWork;
 public class T795 {
 
     public int numSubarrayBoundedMax(int[] nums, int left, int right) {
-
+        
     }
 
 }

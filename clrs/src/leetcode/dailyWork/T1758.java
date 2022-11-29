@@ -35,6 +35,17 @@ public class T1758 {
         return ret;
     }
 
+    public int minOperations2(String s) {
+        int cnt = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c != (char) ('0' + i % 2)) {
+                cnt++;
+            }
+        }
+        return Math.min(cnt, s.length() - cnt);
+    }
+
     static T1758 t1758 = new T1758();
 
     public static void main(String[] args) {

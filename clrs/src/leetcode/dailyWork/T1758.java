@@ -15,7 +15,30 @@ package leetcode.dailyWork;
 public class T1758 {
 
     public int minOperations(String s) {
-        
+        char[] str = s.toCharArray();
+        int len = str.length;
+        int sub1 = 0;
+        int sub0 = 0;
+        int ret = 0;
+        for (int i = 0; i < len; i++) {
+            if (str[i] == '1') {
+                sub1++;
+                ret += sub0 / 2;
+                sub0 = 0;
+            } else {
+                sub0++;
+                ret += sub1 / 2;
+                sub1 = 0;
+            }
+        }
+        ret += sub1 == 0 ? sub0 / 2 : sub1 / 2;
+        return ret;
+    }
+
+    static T1758 t1758 = new T1758();
+
+    public static void main(String[] args) {
+        System.out.println(t1758.minOperations("111110001"));
     }
 
 }

@@ -15,7 +15,19 @@ package leetcode.dailyWork;
 public class T1779 {
 
     public int nearestValidPoint(int x, int y, int[][] points) {
-
+        int ret = -1;
+        int val = Integer.MAX_VALUE;
+        int tmp = 0;
+        for (int i = 0; i < points.length; i++) {
+            if (points[i][0] == x || points[i][1] == y) {
+                tmp = Math.abs(points[i][0] - x) + Math.abs(points[i][1] - y);
+                if (tmp < val) {
+                    val = tmp;
+                    ret = i;
+                }
+            }
+        }
+        return ret;
     }
 
 }

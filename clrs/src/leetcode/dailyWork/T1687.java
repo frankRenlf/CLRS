@@ -53,7 +53,6 @@ public class T1687 {
                 opt.offerLast(i);
             }
         }
-
         return f[n];
     }
 

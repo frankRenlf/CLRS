@@ -17,8 +17,7 @@ import java.util.Arrays;
 public class T1691 {
 
     public int maxHeight(int[][] cuboids) {
-        for (int[] c : cuboids)
-            Arrays.sort(c);
+        for (int[] c : cuboids) Arrays.sort(c);
         Arrays.sort(cuboids, (a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] != b[1] ? a[1] - b[1] : a[2] - b[2]);
         int ans = 0, n = cuboids.length;
         int[] f = new int[n];

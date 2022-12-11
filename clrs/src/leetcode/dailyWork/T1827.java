@@ -14,6 +14,7 @@ package leetcode.dailyWork;
  */
 public class T1827 {
 
+    
     public int minOperations(int[] nums) {
         int cnt = 0;
         for (int i = 1; i < nums.length; i++) {

@@ -13,7 +13,6 @@ package leetcode.dailyWork;
  * @Description :
  */
 public class T1827 {
-
     
     public int minOperations(int[] nums) {
         int cnt = 0;

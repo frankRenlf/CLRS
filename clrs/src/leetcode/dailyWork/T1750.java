@@ -15,7 +15,25 @@ package leetcode.dailyWork;
 public class T1750 {
 
     public int minimumLength(String s) {
-        
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right && s.charAt(left) == s.charAt(right)) {
+            while (left + 1 < right && s.charAt(left) == s.charAt(left + 1)) {
+                left++;
+            }
+            while (left < right - 1 && s.charAt(right - 1) == s.charAt(right)) {
+                right--;
+            }
+            left++;
+            right--;
+        }
+        return right - left + 1;
+    }
+
+    static T1750 t1750 = new T1750();
+
+    public static void main(String[] args) {
+        System.out.println(t1750.minimumLength("ca"));
     }
 
 }

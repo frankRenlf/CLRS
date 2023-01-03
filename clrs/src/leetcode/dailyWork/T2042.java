@@ -15,10 +15,11 @@ package leetcode.dailyWork;
 public class T2042 {
     public boolean areNumbersAscending(String s) {
         int x = -1;
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isDigit(s.charAt(i))) {
-                int val = s.charAt(i) - '0';
-                if (x > val) {
+        String[] arr = s.split(" ");
+        for (String value : arr) {
+            if (Character.isDigit(value.charAt(0))) {
+                int val = Integer.parseInt(value);
+                if (x >= val) {
                     return false;
                 } else {
                     x = val;
@@ -26,5 +27,9 @@ public class T2042 {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Integer.parseInt("123"));
     }
 }

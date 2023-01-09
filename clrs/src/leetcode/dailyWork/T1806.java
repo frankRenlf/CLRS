@@ -14,20 +14,17 @@ package leetcode.dailyWork;
  */
 public class T1806 {
     public int reinitializePermutation(int n) {
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                if (i != i / 2) {
-                    ans++;
-                }
-            } else {
-                if (i != (n / 2 + (i - 1) / 2)) {
-                    ans++;
-                }
-            }
+        if (n == 2) {
+            return 1;
         }
-        return n==2?1:ans;
+        int step = 1, pow2 = 2;
+        while (pow2 != 1) {
+            step++;
+            pow2 = pow2 * 2 % (n - 1);
+        }
+        return step;
     }
+
     static T1806 t1806 = new T1806();
 
     public static void main(String[] args) {

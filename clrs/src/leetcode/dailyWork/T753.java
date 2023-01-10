@@ -16,7 +16,6 @@ import java.util.Map;
  * @Description :
  */
 public class T753 {
-
     public String crackSafe(int n, int k) {
         Map<String, Integer> map = new HashMap<>();
         int kn = (int) Math.pow(k, n);//路径数量

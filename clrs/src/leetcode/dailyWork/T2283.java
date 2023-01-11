@@ -21,11 +21,11 @@ public class T2283 {
         Map<Integer, Integer> map = new HashMap<>();
         char[] crr = num.toCharArray();
         for (char c : crr) {
-            map.put(c - '0', map.getOrDefault(c - '0', 0) + 1);
+            int digit = c - '0';
+            map.put(digit, map.getOrDefault(digit, 0) + 1);
         }
         for (int i = 0; i < len; i++) {
-            int val = map.get(i) == null ? 0 : map.get(i);
-            if (crr[i] - '0' != val) {
+            if (crr[i] - '0' != map.getOrDefault(i, 0)) {
                 return false;
             }
         }

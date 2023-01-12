@@ -34,7 +34,7 @@ public class T1807 {
                     r++;
                 }
                 String frag = s.substring(index + 1, r);
-                String add = dict.getOrDefault(dict.get(frag), null);
+                String add = dict.getOrDefault(frag, null);
                 ans.append(add == null ? "?" : add);
                 index = r;
             } else {

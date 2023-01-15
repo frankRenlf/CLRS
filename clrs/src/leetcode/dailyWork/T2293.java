@@ -14,6 +14,8 @@ package leetcode.dailyWork;
  */
 public class T2293 {
 
-    
+    public int minMaxGame(int[] nums) {
+
+    }
 
 }

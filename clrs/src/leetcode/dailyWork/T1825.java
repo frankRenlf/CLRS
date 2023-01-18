@@ -1,5 +1,9 @@
 package leetcode.dailyWork;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.TreeMap;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -21,7 +25,7 @@ public class T1825 {
     private int size1, size2, size3;
     private long sum2;
 
-    public MKAverage(int m, int k) {
+    public T1825(int m, int k) {
         this.m = m;
         this.k = k;
         this.q = new ArrayDeque<Integer>();
@@ -136,5 +140,5 @@ public class T1825 {
         }
         return (int) (sum2 / (m - 2 * k));
     }
-    
+
 }

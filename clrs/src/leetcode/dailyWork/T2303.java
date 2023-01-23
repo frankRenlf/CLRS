@@ -24,6 +24,7 @@ public class T2303 {
                 pre = el[0];
             } else {
                 res += (income - pre) * el[1] / div;
+                break;
             }
         }
         return res;

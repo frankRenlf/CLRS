@@ -13,4 +13,9 @@ package leetcode.dailyWork;
  * @Description :
  */
 public class T1663 {
+
+    public String getSmallestString(int n, int k) {
+
+    }
+
 }

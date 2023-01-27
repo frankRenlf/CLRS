@@ -1,5 +1,10 @@
 package leetcode.dailyWork;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -15,7 +20,27 @@ package leetcode.dailyWork;
 public class T2309 {
 
     public String greatestLetter(String s) {
+        char ret = '0';
+        Set<Character> map = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            if (!map.contains(c)) {
+                if ((Character.toLowerCase(c) != c && map.contains(Character.toLowerCase(c))) || (Character.toUpperCase(c) != c && map.contains(Character.toUpperCase(c)))) {
+                    char x = Character.toUpperCase(c);
+                    if (x > ret) {
+                        ret = x;
+                    }
+                } else {
+                    map.add(c);
+                }
+            }
+        }
+        return ret == '0' ? "" : String.valueOf(ret);
+    }
 
+    static T2309 t2309 = new T2309();
+
+    public static void main(String[] args) {
+        System.out.println(t2309.greatestLetter("arRAzFif"));
     }
 
 }

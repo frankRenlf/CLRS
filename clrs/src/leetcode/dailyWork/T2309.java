@@ -24,7 +24,8 @@ public class T2309 {
         Set<Character> map = new HashSet<>();
         for (char c : s.toCharArray()) {
             if (!map.contains(c)) {
-                if ((Character.toLowerCase(c) != c && map.contains(Character.toLowerCase(c))) || (Character.toUpperCase(c) != c && map.contains(Character.toUpperCase(c)))) {
+                if ((Character.toLowerCase(c) != c && map.contains(Character.toLowerCase(c)))
+                        || (Character.toUpperCase(c) != c && map.contains(Character.toUpperCase(c)))) {
                     char x = Character.toUpperCase(c);
                     if (x > ret) {
                         ret = x;

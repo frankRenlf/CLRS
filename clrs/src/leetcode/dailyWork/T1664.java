@@ -15,6 +15,17 @@ package leetcode.dailyWork;
 public class T1664 {
 
     public int waysToMakeFair(int[] nums) {
+        int n = nums.length;
+        int oddVal = 0, evenVal = 0;
+        int[] odd = new int[n];
+        int[] even = new int[n];
+        for (int i = n-1; i >=0; i--) {
+            if (i % 2 == 0) {
+                evenVal += nums[i];
+            } else {
+                oddVal += nums[i];
+            }
+        }
 
     }
 

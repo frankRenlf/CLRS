@@ -13,4 +13,9 @@ package leetcode.dailyWork;
  * @Description :
  */
 public class T1664 {
+
+    public int waysToMakeFair(int[] nums) {
+
+    }
+
 }

@@ -21,7 +21,7 @@ public class T2315 {
             if (c == '|') {
                 count++;
             }
-            if (c == '*' && (count & 2) == 0) {
+            if (c == '*' && (count % 2) == 0) {
                 ret++;
             }
         }

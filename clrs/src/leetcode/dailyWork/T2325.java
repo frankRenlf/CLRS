@@ -22,14 +22,14 @@ public class T2325 {
         char a = 'a';
         for (char c :
                 key.toCharArray()) {
-            if (c!=' '&&!map.containsKey(c)) {
+            if (c != ' ' && !map.containsKey(c)) {
                 map.put(c, a++);
             }
         }
         StringBuilder ret = new StringBuilder();
         for (char c :
                 message.toCharArray()) {
-            ret.append(map.getOrDefault(c,' '));
+            ret.append(map.getOrDefault(c, ' '));
         }
         return ret.toString();
     }

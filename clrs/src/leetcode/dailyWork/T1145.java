@@ -1,5 +1,7 @@
 package leetcode.dailyWork;
 
+import leetcode.algorithm.TreeNode;
+
 /**
  * Created with IntelliJ IDEA.
  *

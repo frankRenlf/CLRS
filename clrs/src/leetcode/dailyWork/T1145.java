@@ -11,7 +11,7 @@ import leetcode.algorithm.TreeNode;
  * @Package : leetcode.dailyWork
  * @createTime : 2023/2/3 23:37
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 public class T1145 {

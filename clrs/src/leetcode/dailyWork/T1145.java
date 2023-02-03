@@ -12,7 +12,7 @@ import leetcode.algorithm.TreeNode;
  * @createTime : 2023/2/3 23:37
  * @Email : sc19lr@leeds.ac.uk
  * @github : <a href="https://github.com/frankRenlf">...</a>
- * @Description :
+ * @Description : replace by leetcode official work
  */
 public class T1145 {
 

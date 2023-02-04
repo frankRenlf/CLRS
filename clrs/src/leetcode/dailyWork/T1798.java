@@ -14,6 +14,8 @@ package leetcode.dailyWork;
  */
 public class T1798 {
 
+    public int getMaximumConsecutive(int[] coins) {
 
+    }
 
 }

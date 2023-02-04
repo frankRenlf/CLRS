@@ -15,7 +15,15 @@ package leetcode.dailyWork;
 public class T1798 {
 
     public int getMaximumConsecutive(int[] coins) {
-
+        int res = 1;
+        Arrays.sort(coins);
+        for (int i : coins) {
+            if (i > res) {
+                break;
+            }
+            res += i;
+        }
+        return res;
     }
 
 }

@@ -14,7 +14,7 @@ package leetcode.dailyWork;
  */
 public class T1210 {
 
-    private static int[][] DIRS = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+    private static final int[][] DIRS = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
 
     public int minimumMoves(int[][] g) {
         int n = g.length;

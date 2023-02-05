@@ -1,5 +1,8 @@
 package leetcode.dailyWork;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -23,7 +26,7 @@ public class T1210 {
         vis[0][0][0] = true;
         q.add(new int[]{0, 0, 0}); // 初始位置
         for (int step = 1; !q.isEmpty(); ++step) {
-            var tmp = q;
+            List<int[]> tmp = q;
             q = new ArrayList<>();
             for (var t : tmp) {
                 for (var d : DIRS) {

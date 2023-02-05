@@ -21,7 +21,7 @@ public class T1210 {
 
     public int minimumMoves(int[][] g) {
         int n = g.length;
-        var vis = new boolean[n][n][2];
+        boolean[][][] vis = new boolean[n][n][2];
         List<int[]> q = new ArrayList<int[]>();
         vis[0][0][0] = true;
         q.add(new int[]{0, 0, 0}); // 初始位置
@@ -29,7 +29,7 @@ public class T1210 {
             List<int[]> tmp = q;
             q = new ArrayList<>();
             for (int[] t : tmp) {
-                for (var d : DIRS) {
+                for (int[] d : DIRS) {
                     int x = t[0] + d[0], y = t[1] + d[1], s = t[2] ^ d[2];
                     int x2 = x + s, y2 = y + (s ^ 1); // 蛇头
                     if (x2 < n && y2 < n && !vis[x][y][s] &&

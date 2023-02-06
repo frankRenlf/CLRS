@@ -33,7 +33,7 @@ public class T2331 {
     static T2331 t2331 = new T2331();
 
     public static void main(String[] args) {
-        System.out.println(t2331. ());
+//        System.out.println(t2331. ());
     }
 
 }

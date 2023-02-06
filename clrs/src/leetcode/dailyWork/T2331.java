@@ -18,9 +18,7 @@ public class T2331 {
 
     public boolean evaluateTree(TreeNode root) {
         Boolean ret = null;
-        if (root.left == null) {
-            return root.val == 1;
-        }
+
         if (root.val == 2) {
             ret = evaluateTree(root.left) || evaluateTree(root.right);
         } else if (root.val == 3) {
@@ -30,6 +28,7 @@ public class T2331 {
         }
         return ret;
     }
+
 
     static T2331 t2331 = new T2331();
 

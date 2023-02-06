@@ -18,12 +18,15 @@ public class T2331 {
 
     public boolean evaluateTree(TreeNode root) {
         Boolean ret = null;
+        if (root.left == null) {
+            return root.val == 1;
+        }
         if (root.val == 2) {
             ret = evaluateTree(root.left) || evaluateTree(root.right);
         } else if (root.val == 3) {
             ret = evaluateTree(root.left) && evaluateTree(root.right);
         } else {
-            return root.val == 0;
+            return root.val == 1;
         }
         return ret;
     }
@@ -31,7 +34,7 @@ public class T2331 {
     static T2331 t2331 = new T2331();
 
     public static void main(String[] args) {
-        System.out.println(t2331.());
+        System.out.println(t2331. ());
     }
 
 }

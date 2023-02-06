@@ -18,7 +18,6 @@ public class T2331 {
 
     public boolean evaluateTree(TreeNode root) {
         Boolean ret = null;
-
         if (root.val == 2) {
             ret = evaluateTree(root.left) || evaluateTree(root.right);
         } else if (root.val == 3) {

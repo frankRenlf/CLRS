@@ -9,7 +9,7 @@ package leetcode.dailyWork;
  * @Package : leetcode.dailyWork
  * @createTime : 2023/2/7 10:17
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 public class T1604 {

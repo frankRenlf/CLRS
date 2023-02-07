@@ -15,6 +15,7 @@ import java.util.*;
  * @Description :
  */
 public class T1604 {
+
     public List<String> alertNames(String[] keyName, String[] keyTime) {
         Map<String, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < keyName.length; ++i) {
@@ -40,4 +41,5 @@ public class T1604 {
         Collections.sort(ans);
         return ans;
     }
+    
 }

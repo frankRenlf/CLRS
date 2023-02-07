@@ -9,7 +9,7 @@ package leetcode.algorithm;
  * @Package : leetcode.algorithm
  * @createTime : 2022/8/14 14:27
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 public class KMP {

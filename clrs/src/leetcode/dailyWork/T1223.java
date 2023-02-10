@@ -9,7 +9,7 @@ package leetcode.dailyWork;
  * @Package : leetcode.dailyWork
  * @createTime : 2023/2/10 8:52
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 public class T1223 {
@@ -33,6 +33,6 @@ public class T1223 {
         }
         return sum[n];
     }
-    
+
 
 }

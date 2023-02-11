@@ -30,6 +30,7 @@ public class T2335 {
         }
         return sum % 2 == 0 ? sum / 2 : sum / 2 + 1;
     }
+
     public int fillCups2(int[] amount) {
         Arrays.sort(amount);
         if (amount[2] > amount[1] + amount[0]) {

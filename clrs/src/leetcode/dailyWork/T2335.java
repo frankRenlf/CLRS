@@ -13,4 +13,9 @@ package leetcode.dailyWork;
  * @Description :
  */
 public class T2335 {
+
+    public int fillCups(int[] amount) {
+        
+    }
+
 }

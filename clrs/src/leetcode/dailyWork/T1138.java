@@ -24,22 +24,42 @@ public class T1138 {
             int x = len % 5, y = len / 5;
             int div_x = x - pre_x;
             int div_y = y - pre_y;
-            while (div_y < 0) {
-                cnt.append('U');
-                div_y++;
+            if(c=='z'){
+                while (div_x < 0) {
+                    cnt.append('L');
+                    div_x++;
+                }
+                while (div_x > 0) {
+                    cnt.append('R');
+                    div_x--;
+                }
+                while (div_y < 0) {
+                    cnt.append('U');
+                    div_y++;
+                }
+                while (div_y > 0) {
+                    cnt.append('D');
+                    div_y--;
+                }
+            }else {
+                while (div_y < 0) {
+                    cnt.append('U');
+                    div_y++;
+                }
+                while (div_y > 0) {
+                    cnt.append('D');
+                    div_y--;
+                }
+                while (div_x < 0) {
+                    cnt.append('L');
+                    div_x++;
+                }
+                while (div_x > 0) {
+                    cnt.append('R');
+                    div_x--;
+                }
             }
-            while (div_y > 0) {
-                cnt.append('D');
-                div_y--;
-            }
-            while (div_x < 0) {
-                cnt.append('L');
-                div_x++;
-            }
-            while (div_x > 0) {
-                cnt.append('R');
-                div_x--;
-            }
+
             cnt.append('!');
             pre_x = x;
             pre_y = y;

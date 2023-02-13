@@ -9,7 +9,7 @@ package leetcode.dailyWork;
  * @Package : leetcode.dailyWork
  * @createTime : 2023/2/13 9:04
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 public class T1234 {
@@ -46,10 +46,7 @@ public class T1234 {
     }
 
     public boolean check(int[] cnt, int partial) {
-        if (cnt[idx('Q')] > partial || cnt[idx('W')] > partial || cnt[idx('E')] > partial || cnt[idx('R')] > partial) {
-            return false;
-        }
-        return true;
+        return cnt[idx('Q')] <= partial && cnt[idx('W')] <= partial && cnt[idx('E')] <= partial && cnt[idx('R')] <= partial;
     }
 
 }

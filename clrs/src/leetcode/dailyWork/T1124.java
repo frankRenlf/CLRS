@@ -14,6 +14,8 @@ package leetcode.dailyWork;
  */
 public class T1124 {
 
+    public int longestWPI(int[] hours) {
 
+    }
 
 }

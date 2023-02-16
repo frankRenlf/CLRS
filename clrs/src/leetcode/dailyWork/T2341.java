@@ -1,5 +1,9 @@
 package leetcode.dailyWork;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -15,7 +19,19 @@ package leetcode.dailyWork;
 public class T2341 {
 
     public int[] numberOfPairs(int[] nums) {
-
+        int n = nums.length;
+        int count = 0;
+        Set<Integer> set = new HashSet<>();
+        for (int x :
+                nums) {
+            if (set.contains(x)) {
+                count++;
+                set.remove(x);
+            } else {
+                set.add(x);
+            }
+        }
+        return new int[]{count, n - 2 * count};
     }
 
 }

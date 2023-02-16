@@ -17,7 +17,6 @@ import java.util.Set;
  * @Description :
  */
 public class T2341 {
-
     public int[] numberOfPairs(int[] nums) {
         int n = nums.length;
         int count = 0;
@@ -33,5 +32,4 @@ public class T2341 {
         }
         return new int[]{count, n - 2 * count};
     }
-
 }

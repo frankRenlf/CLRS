@@ -12,7 +12,7 @@ import java.util.List;
  * @Package : leetcode.dailyWork
  * @createTime : 2023/2/18 18:44
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 

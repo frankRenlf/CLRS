@@ -1,5 +1,7 @@
 package leetcode.dailyWork;
 
+import java.util.PriorityQueue;
+
 /**
  * Created with IntelliJ IDEA.
  *

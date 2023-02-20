@@ -27,8 +27,7 @@ public class T2347 {
             return "Flush";
         }
         Map<Integer, Integer> map = new HashMap<>();
-        for (int rank :
-                ranks) {
+        for (int rank : ranks) {
             map.put(rank, map.getOrDefault(rank, 0) + 1);
         }
         if (map.size() == 5) return "High Card";

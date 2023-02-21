@@ -41,6 +41,6 @@ public class T1326 {
     static T1326 t1326 = new T1326();
 
     public static void main(String[] args) {
-        System.out.println(t1326.minTaps(5, new int[]{0,3,1, 1, 0 , 4}));
+        System.out.println(t1326.minTaps(5, new int[]{3, 4, 1, 1, 0, 0}));
     }
 }

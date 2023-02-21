@@ -91,14 +91,12 @@ public class MatrixUDG {
 
         // 初始化"顶点"
         mVertex = new char[vlen];
-        for (int i = 0; i < mVertex.length; i++)
-            mVertex[i] = vexs[i];
+        System.arraycopy(vexs, 0, mVertex, 0, mVertex.length);
 
         // 初始化"边"
         mMatrix = new int[vlen][vlen];
         for (int i = 0; i < vlen; i++)
-            for (int j = 0; j < vlen; j++)
-                mMatrix[i][j] = matrix[i][j];
+            System.arraycopy(matrix[i], 0, mMatrix[i], 0, vlen);
 
         // 统计"边"
         mEdgNum = 0;
@@ -482,8 +480,8 @@ public class MatrixUDG {
 
     public static void main(String[] args) {
         char[] vexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
-        int matrix[][] = {
-                /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
+        int[][] matrix = {
+                //   /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
                 /*A*/ {0, 12, INF, INF, INF, 16, 14},
                 /*B*/ {12, 0, 10, INF, INF, 7, INF},
                 /*C*/ {INF, 10, 0, 3, 5, 6, INF},

@@ -11,7 +11,7 @@ import java.util.*;
  * @Package : leetcode.algorithm
  * @createTime : 2023/2/24 10:20
  * @Email : sc19lr@leeds.ac.uk
- * @github : https://github.com/frankRenlf
+ * @github : <a href="https://github.com/frankRenlf">...</a>
  * @Description :
  */
 class Item {
@@ -44,25 +44,31 @@ public class Package {
 
     public Package(Integer totalWeight, List<Item> items) {
         this.totalWeight = totalWeight;
+
         this.items = items;
     }
 
     static Map<Double, String> map = new HashMap<>();
 
     public double cal() {
-        return single(this.totalWeight, "");
+        return recall(this.totalWeight, "");
+    }
+    public double dp() {
+        return 0.0;
     }
 
-    public double single(double tw, String s) {
-        if (tw <= 0) {
-
+    public double recall(double tw, String s) {
+        if (tw == 0) {
             return 0;
+        }
+        if (tw < 0) {
+            return Integer.MIN_VALUE;
         }
         List<Double> tmp = new ArrayList<>();
         for (int i = 0; i < items.size(); i++) {
             String ts = s + items.get(i).getName() + " ";
             tmp.add(items.get(i).getProfit()
-                    + single(tw - items.get(i).getWeight(),
+                    + recall(tw - items.get(i).getWeight(),
                     ts));
             map.put(tmp.get(i), ts);
         }
@@ -84,14 +90,18 @@ public class Package {
         aPackage.items.add(new Item("C", 4.0, 10));
         aPackage.items.add(new Item("D", 1.0, 1));
         aPackage.items.add(new Item("E", 2.0, 2));
+        aPackage.items.sort(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return o2.profit - o1.profit;
+            }
+        });
         Double val = aPackage.cal();
         System.out.println(val);
-        String[] s = map.get(val).split("");
-
-        for (String x : s) {
-            System.out.print(x + " ");
-        }
-        System.out.println();
-        System.out.println(".................");
+//        String[] s = map.get(val).split(" ");
+//
+//        for (String x : s) {
+//            System.out.print(x + " ");
+//        }
     }
 }

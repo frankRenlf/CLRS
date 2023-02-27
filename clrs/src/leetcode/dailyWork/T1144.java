@@ -18,18 +18,19 @@ public class T1144 {
     }
 
     public int help(int[] nums, int pos) {
-        int res = 0;
-        for (int i = pos; i < nums.length; i += 2) {
-            int a = 0;
+        int len = nums.length;
+        int ret = 0;
+        for (int i = pos; i < len; i += 2) {
+            int ans = 0;
             if (i - 1 >= 0) {
-                a = Math.max(a, nums[i] - nums[i - 1] + 1);
+                ans = Math.max(ans, nums[i] - nums[i - 1] + 1);
             }
             if (i + 1 < nums.length) {
-                a = Math.max(a, nums[i] - nums[i + 1] + 1);
+                ans = Math.max(ans, nums[i] - nums[i + 1] + 1);
             }
-            res += a;
+            ret += ans;
         }
-        return res;
+        return ret;
     }
 
 }

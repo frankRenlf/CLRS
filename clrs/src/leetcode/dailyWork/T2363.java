@@ -26,7 +26,8 @@ public class T2363 {
         }
         for (Map.Entry<Integer, Integer> el : map.entrySet()) {
             List<Integer> list = new ArrayList<>();
-            list.add(el.getKey(), el.getValue());
+            list.add(el.getKey());
+            list.add(el.getValue());
             ret.add(list);
         }
         ret.sort(new Comparator<List<Integer>>() {

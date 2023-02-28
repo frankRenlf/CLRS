@@ -33,9 +33,13 @@ public class T2363 {
         ret.sort(new Comparator<List<Integer>>() {
             @Override
             public int compare(List<Integer> o1, List<Integer> o2) {
-                return o1.get(1) - o2.get(1);
+                return o1.get(0) - o2.get(0);
             }
         });
         return ret;
+    }
+    static T2363 t2363 = new T2363();
+
+    public static void main(String[] args) {
     }
 }
